@@ -1,0 +1,11 @@
+Inscription/Connexion
+
+Visiteur peut faire:
+    Affichage liste public page d'accueil
+    Ajout/Suppression de liste et de tache (public) (donc le boolean est à 0)
+    S'inscrire
+
+L'utilisateur  connecté peut faire:
+    Accéder au liste public et liste privé lui appartenant;
+    ajout/suppression de liste et de tache (public ou privé)
+    bouton à coté des taches pour les complété ou pas (ajax)
