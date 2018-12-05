@@ -1,7 +1,7 @@
 <?php
 
 class Connection extends PDO{
-    private $stmt;
+    private $_stmt;
 
     public function __construct($dsn, $username, $password){
         parent::__construct($dsn, $username, $password);
@@ -9,15 +9,15 @@ class Connection extends PDO{
     }
 
     public function executeQuery($query, array $parameters=[]){
-        $this->stmt=parent::prepare($query);
+        $this->_stmt=parent::prepare($query);
         foreach($parameters as $name => $value){
-            $this->stmt->bindValue($name,$value[0],$value[1]);
+            $this->_stmt->bindValue($name,$value[0],$value[1]);
         }
-        return $this->stmt->execute();
+        return $this->_stmt->execute();
     }
 
     public function getResults(){
-        return $this->stmt->fetchall();
+        return $this->_stmt->fetchall();
     }
 }
 

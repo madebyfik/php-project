@@ -2,57 +2,57 @@
 
 class Utilisateur {
 
-    private $id;
-    private $nom;
-    private $prenom;
-    private $mail;
-    private $password;
+    private $_id;
+    private $_nom;
+    private $_prenom;
+    private $_mail;
+    private $_password;
 
     function __construct($id, $nom, $prenom, $mail, $password) {
-        $this->id = $id;
-        $this->nom = $nom;
-        $this->prenom = $prenom;
-        $this->mail = $mail;
-        $this->password = $password;
+        $this->_id = $id;
+        $this->_nom = $nom;
+        $this->_prenom = $prenom;
+        $this->_mail = $mail;
+        $this->_password = $password;
     }
 
     public function getId() {
-        return $this->id;
+        return $this->_id;
     }
 
     public function getNom() {
-        return $this->nom;
+        return $this->_nom;
     }
 
     public function getPrenom() {
-        return $this->prenom;
+        return $this->_prenom;
     }
 
     public function getMail() {
-        return $this->mail;
+        return $this->_mail;
     }
 
     public function getPassword() {
-        return $this->password;
+        return $this->_password;
     }
 
     public function setId($id) {
-        $this->id = $id;
+        $this->_id = $id;
     }
 
     public function getNom($nom) {
-        $this->nom = $nom;
+        $this->_nom = $nom;
     }
 
     public function setPrenom($prenom) {
-        $this->prenom = $prenom;
+        $this->_prenom = $prenom;
     }
 
     public function setMail($mail) {
-        $this->mail = $mail;
+        $this->_mail = $mail;
     }
 
     public function setPassword($password) {
-        $this->password = $password;
+        $this->_password = $password;
     }
 }

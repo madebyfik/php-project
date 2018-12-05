@@ -2,48 +2,48 @@
 
 class Tache {
 
-    private $id;
-    private $nom;
-    private $description;
-    private $idList;
+    private $_id;
+    private $_nom;
+    private $_description;
+    private $_idList;
 
     function __construct($id, $nom, $description, $idList) {
-        $this->id = $id;
-        $this->nom = $nom;
-        $this->description = $description;
-        $this->idUtilisateur = $idUtilisateur;
+        $this->_id = $id;
+        $this->_nom = $nom;
+        $this->_description = $description;
+        $this->_idUtilisateur = $idUtilisateur;
     }
 
     public function getId() {
-        return $id;
+        return $_id;
     }
 
     public function getNom() {
-        return $nom;
+        return $_nom;
     }
 
     public function getDescription() {
-        return $description;
+        return $_description;
     }
 
     public function getIdList() {
-        return $idList;
+        return $_idList;
     }
 
     public function setId($id) {
-        $this->id = $id;
+        $this->_id = $id;
     }
 
     public function setNom($nom) {
-        $this->nom = $nom;
+        $this->_nom = $nom;
     }
 
     public function setDescription($description) {
-        $this->description = $description;
+        $this->_description = $description;
     }
 
     public function setIdList($idList) {
-        $this->idList = $idList
+        $this->_idList = $idList
     }
 
 }

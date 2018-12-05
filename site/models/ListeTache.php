@@ -2,48 +2,48 @@
 
 class ListeTache {
 
-    private $id;
-    private $nom;
-    private $public;
-    private $idUtilisateur;
+    private $_id;
+    private $_nom;
+    private $_public;
+    private $_idUtilisateur;
 
     function __construct($id, $nom, $public, $idUtilisateur) {
-        $this->id = $id;
-        $this->nom = $nom;
-        $this->public = $public;
-        $this->idUtilisateur = $idUtilisateur;
+        $this->_id = $id;
+        $this->_nom = $nom;
+        $this->_public = $public;
+        $this->_idUtilisateur = $idUtilisateur;
     }
 
     public function getId() {
-        return $id;
+        return $_id;
     }
 
     public function getNom() {
-        return $nom;
+        return $_nom;
     }
 
     public function getPublic() {
-        return $public;
+        return $_public;
     }
 
     public function getIdUtilisateur() {
-        return $idUtilisateur;
+        return $_idUtilisateur;
     }
 
     public function setId($id) {
-        $this->id = $id;
+        $this->_id = $id;
     }
 
     public function setNom($nom) {
-        $this->nom = $nom;
+        $this->_nom = $nom;
     }
 
     public function setPublic($public) {
-        $this->public = $public;
+        $this->_public = $public;
     }
 
     public function setIdUtilisateur($idUtilisateur) {
-        $this->idUtilisateur = $idUtilisateur
+        $this->_idUtilisateur = $idUtilisateur
     }
 
 }

@@ -25,7 +25,7 @@ class GuestController {
             }
             
         } catch (Exception $e) {
-
+            
         }
     }
 
