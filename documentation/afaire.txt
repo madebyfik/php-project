@@ -9,3 +9,30 @@ L'utilisateur  connecté peut faire:
     Accéder au liste public et liste privé lui appartenant;
     ajout/suppression de liste et de tache (public ou privé)
     bouton à coté des taches pour les complété ou pas (ajax)
+
+
+Structure site
+
+./
+    index.php
+
+./model
+    ModelConnexion
+    ModelInscription
+    ModelListe
+    ModelCreationList
+    ModelTache
+
+./vue
+    Connexion
+    Inscription
+    Consulter les listes
+    Création d'une liste
+    Ajout une tache
+    Page d'erreur 404
+
+./DAL
+    Connexion
+    UtilisateurGateway
+    ListeTacheGateway
+    TacheGateway
