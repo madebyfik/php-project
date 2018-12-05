@@ -1,15 +1,10 @@
-<html>
+<?php
+    
+    require_once(__DIR__ . '/config/config.php');
 
-    <head>
-        <?php include "vue/includes/head.php"; ?>
-    <head>
+    require_once(__DIR__ . '/config/Autoload.php');
 
-    <body>
-
-    <?php include "vue/includes/header.php"; ?>
-
-    <?php include "vue/includes/footer.php"; ?>
-
-    </body>
-
-</html>
+    Autoload::charger();
+    
+    $guestController = new GuestController(); 
+?>

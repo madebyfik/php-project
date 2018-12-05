@@ -17,20 +17,11 @@ Structure site
     index.php
 
 ./model
-    Utilisateur
-    ListeTache
-    Tache
-    
     ModelConnexion
     ModelInscription
     ModelListe
     ModelCreationList
     ModelTache
-
-./controller
-    ControllerUtilisateur
-    ControllerListe
-    ControllerTache
 
 ./vue
     Connexion
@@ -45,6 +36,3 @@ Structure site
     UtilisateurGateway
     ListeTacheGateway
     TacheGateway
-
-./config
-    autoloader

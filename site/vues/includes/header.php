@@ -11,20 +11,20 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbar-principal">
             <ul class="navbar-nav">
                 <li class="nav-item ml-2">
-                    <a class="nav-link hvr-underline-from-center" href="/">Liste</a>
+                    <a class="nav-link hvr-underline-from-center" href="index.php">Liste</a>
                 </li>
                 <li class="nav-item ml-2">
-                    <a class="nav-link hvr-underline-from-center" href="/contact">Contact</a>
+                    <a class="nav-link hvr-underline-from-center" href="index.php?action=contact">Contact</a>
                 </li>
                 <li class="nav-item ml-2">
-                    <a class="nav-link hvr-underline-from-center" href="/apropos">A Propos</a>
+                    <a class="nav-link hvr-underline-from-center" href="index.php?action=apropos">A Propos</a>
                 </li>
             </ul>
         </div>
 
         <div class="collapse navbar-collapse navbar-header justify-content-end" id="navbar-secondaire">
-            <a href="login.html" class="nav-btn btn btn-light my-2 my-sm-0 ml-1 mr-2" role="btn">Connexion</a>
-            <a href="login.html" class="nav-btn btn btn-warning my-2 my-sm-0 ml-1 mr-2" role="btn">Inscription</a>
+            <a href="#" class="nav-btn btn btn-light my-2 my-sm-0 ml-1 mr-2" role="btn">Connexion</a>
+            <a href="#" class="nav-btn btn btn-warning my-2 my-sm-0 ml-1 mr-2" role="btn">Inscription</a>
         </div>
     </nav>
 </header>
