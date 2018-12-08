@@ -2,7 +2,7 @@
 
 ini_set('display_errors', 0);
 
-class GuestController {
+class GuestController extends Controller{
 
     function __construct() {
         session_start();
@@ -31,8 +31,9 @@ class GuestController {
 
     public function navigation($page) {
         global $vues, $rep;
-
-        require($rep . $vues[$page]);
+        
+        $this->layout($rep, $vues[$page]);
+        //require($rep . $vues[$page]);
     }
 
 }
