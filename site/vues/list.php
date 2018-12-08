@@ -1,19 +1,3 @@
-<html>
-
-    <head>
-        <?php include "includes/head.php"; ?>
-    <head>
-
-    <body>
-
-        <?php include "includes/header.php"; ?>
-
-        <main>
-            <h1>Il y'a une liste ici normalement</h1>
-        </main>
-        
-        <?php include "includes/footer.php"; ?>
-
-    </body>
-
-</html>
+<main>
+    <h1>Il y'a une liste ici normalement</h1>
+</main>
