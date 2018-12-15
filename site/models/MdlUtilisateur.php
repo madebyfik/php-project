@@ -13,8 +13,14 @@ class MdlUtilisateur {
     }
 
     function isUtilisateur() {
-        if(isset($_SESSION['email']) && isset($_SESSION['password'])) {
-            
+        if(isset($_SESSION['email'])) {
+            $email = Validation::valString($_SESSION['email']);
+
+            utilisateurGateway->findByEmail()
+
+            return true;
+        } else {
+            return false;
         }
     } 
 
