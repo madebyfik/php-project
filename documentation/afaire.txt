@@ -1,3 +1,5 @@
+apache rewrite (avoir)
+
 Inscription/Connexion
 
 Visiteur peut faire:
