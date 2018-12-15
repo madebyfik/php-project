@@ -24,14 +24,13 @@ class UtilisateurGateway {
     public function delete($id) {}
 
     public function findByEmail($email) {
-        $query = 'SELECT COUNT(*) FROM utilisateur WHERE email = :email';
+        $query = 'SELECT * FROM utilisateur WHERE email = :email';
 
         $this->_con->executeQuery($query, array(
             ':email' => array($email, PDO::PARAM_STRING)
         ));
 
         $results = $this->_con->getResults();
-
     }
     
 }
