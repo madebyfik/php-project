@@ -1,0 +1,36 @@
+body
+{
+    background: black;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+/*
+
+FORMULAIRE PAGE
+
+*/
+
+#formulaire-login 
+{
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 15px;
+    color: white;
+}
+
+#formulaire-mdp 
+{
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 15px;
+    color: white;
+}
+
+.btn 
+{
+    border-radius: 0;
+}

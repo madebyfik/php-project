@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="collapse navbar-collapse navbar-header justify-content-end" id="navbar-secondaire">
-                    <a href="#" class="nav-btn btn btn-light my-2 my-sm-0 ml-1 mr-2" role="btn">Connexion</a>
+                    <a href="index.php?action=connectGet" class="nav-btn btn btn-light my-2 my-sm-0 ml-1 mr-2" role="btn">Connexion</a>
                     <a href="#" class="nav-btn btn btn-warning my-2 my-sm-0 ml-1 mr-2" role="btn">Inscription</a>
                 </div>
             </nav>

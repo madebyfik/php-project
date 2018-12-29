@@ -12,7 +12,7 @@ class Validation {
 
     static function valFormConnexion(&$mail, &$password, &$dVueEreur) {
 
-        if(!isset($mail) && !empty($mail)) {
+        if(isset($mail) && !empty($mail)) {
             if($email != filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $dVueErreur[] = "Adresse mail incorrecte";
                 $email = "";
@@ -22,8 +22,8 @@ class Validation {
             $email = "";
         }
 
-        if(!isset($password) && !empty($password)) {
-            if($email != filter_var($password, FILTER_SANITIZE_STRING)) {
+        if(isset($password) && !empty($password)) {
+            if($password != filter_var($password, FILTER_SANITIZE_STRING)) {
                 $dVueErreur[] = "Mot de passe incorrecte";
                 $password = "";
             }
@@ -81,7 +81,7 @@ class Validation {
 
     } 
 
-    static function valString($string) {
+    static function valString(&$string) {
         return filter_var($string, FILTER_SANITIZE_STRING);
     }
 

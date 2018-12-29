@@ -7,5 +7,10 @@
 
     Autoload::charger();
 
+    /*$options = [
+        'cost' => 12,
+    ];
+    echo password_hash("fafafa", PASSWORD_BCRYPT, $options);*/
+
     $guestController = new GuestController(); 
 ?>

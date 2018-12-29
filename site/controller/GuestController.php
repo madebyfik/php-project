@@ -18,6 +18,12 @@ class GuestController extends Controller{
                     break;
                 case 'apropos':
                     $this->navigation('apropos');
+                    break; 
+                case 'connectGet':
+                    $this->navigationAuth('connect');
+                    break;
+                case 'connectPOST':
+                    $this->connexion();
                     break;
                 default:
                     $this->navigation('error');
@@ -35,5 +41,27 @@ class GuestController extends Controller{
         $this->layout($rep, $vues[$page]);
         //require($rep . $vues[$page]);
     }
+
+    public function navigationAuth($page) {
+        global $vues, $rep;
+
+        require($rep . $vues[$page]);
+    }
+
+    public function connexion() {
+        global $vues, $rep;
+
+        $mdlUtilisateur = new MdlUtilisateur();
+        
+        extract($_POST);
+
+        try {
+            MdlUtilisateur::connexion($usermail, $userpass);
+        } catch(Exception $e) {
+            echo $e;
+        }
+
+        require($rep . $vues['connect']);
+     }
 
 }
