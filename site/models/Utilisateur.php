@@ -40,7 +40,7 @@ class Utilisateur {
         $this->_id = $id;
     }
 
-    public function getNom($nom) {
+    public function setNom($nom) {
         $this->_nom = $nom;
     }
 
@@ -56,3 +56,6 @@ class Utilisateur {
         $this->_password = $password;
     }
 }
+
+
+?>

@@ -4,7 +4,7 @@ class ListeTacheGateway {
 
     private $_con;
 
-    public function($con) {
+    function __construct($con) {
         $this->_con = $con;
     }
 
@@ -39,6 +39,32 @@ class ListeTacheGateway {
         ));
     }
 
+    public function getAllPublic() {
+        $query = 'SELECT * FROM list_tache WHERE public = :public';
+
+        $this->_con->executeQuery($query, array(
+            ':public' => array(1, PDO::PARAM_BOOL)
+        ));
+
+        $results = $this->_con->getResults();
+
+        if(count($results) > 0) {
+            $arrListeTache = [];
+
+            foreach($results as $liste) {
+                $arrListeTache[] = new ListeTache(
+                    $liste['id'], 
+                    $liste['nom'], 
+                    $liste['public'], 
+                    $liste['idUtilisateur']
+                );
+            }
+            
+            return $arrListeTache;
+        }
+
+        return null;
+    }
 
 }
 

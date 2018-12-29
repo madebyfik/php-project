@@ -5,19 +5,23 @@ ini_set('display_errors', 0);
 class GuestController extends Controller{
 
     function __construct() {
-        session_start();
-
         try {
             $action = $_REQUEST['action'];
             switch($action) {
                 case NULL:
-                    $this->navigation('list');
+                    $this->liste();
                     break;
-                case 'contact':
+                case 'contactPage':
                     $this->navigation('contact');
                     break;
-                case 'apropos':
+                case 'aproposPage':
                     $this->navigation('apropos');
+                    break; 
+                case 'connectPage':
+                    $this->navigationAuth('connect');
+                    break;
+                case 'connect':
+                    $this->connexion();
                     break;
                 default:
                     $this->navigation('error');
@@ -31,9 +35,48 @@ class GuestController extends Controller{
 
     public function navigation($page) {
         global $vues, $rep;
-        
-        $this->layout($rep, $vues[$page]);
-        //require($rep . $vues[$page]);
+
+        $this->render($rep, $vues[$page]);
+    }
+
+    public function navigationAuth($page) {
+        global $vues, $rep;
+
+        $this->render($rep, $vues[$page], false);
+    }
+
+    public function liste() {
+        global $vues, $rep;
+
+
+        $mdlListe = new MdlListe();
+        $data = [];
+
+        $liste = $mdlListe->listePublic();
+
+        $data = array(
+            "liste" => $liste 
+        );
+
+        $this->render($rep, $vues['list'], true, $data);
+    }
+
+    public function connexion() {
+        global $vues, $rep;
+
+        $mdlUtilisateur = new MdlUtilisateur();
+        $data = [];
+        extract($_POST);
+
+        try {
+            $mdlUtilisateur->connexion($usermail, $userpass);
+        } catch(Exception $e) {
+            $data = array (
+                "error" => $e->getMessage()
+            );
+        }
+
+        $this->render($rep, $vues['connect'], false, $data);
     }
 
 }

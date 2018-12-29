@@ -10,25 +10,24 @@ class Validation {
 
     }
 
-    static function valFormConnexion(&$mail, &$password, &$dVueEreur) {
-
-        if(!isset($mail) && !empty($mail)) {
-            if($email != filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    static function valFormConnexion(&$mail, &$password, &$dVueErreur) {
+        if(isset($mail) && !empty($mail)) {
+            if($mail != filter_var($mail, FILTER_VALIDATE_EMAIL)) {
                 $dVueErreur[] = "Adresse mail incorrecte";
-                $email = "";
-            }
+                $mail = "";
+            }   
         } else {
-            $dVueEreur[] = "Veuillez entrer une adresse mail";
-            $email = "";
+            $dVueErreur[] = "Veuillez entrer une adresse mail";
+            $mail = "";
         }
 
-        if(!isset($password) && !empty($password)) {
-            if($email != filter_var($password, FILTER_SANITIZE_STRING)) {
+        if(isset($password) && !empty($password)) {
+            if($password != filter_var($password, FILTER_SANITIZE_STRING)) {
                 $dVueErreur[] = "Mot de passe incorrecte";
                 $password = "";
             }
         } else {
-            $dVueEreur[] = "Veuillez entrer un mot de passe";
+            $dVueErreur[] = "Veuillez entrer un mot de passe";
             $password = "";
         }
     }
@@ -80,5 +79,9 @@ class Validation {
         }
 
     } 
+
+    static function valString(&$string) {
+        return filter_var($string, FILTER_SANITIZE_STRING);
+    }
 
 }
