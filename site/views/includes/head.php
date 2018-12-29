@@ -19,8 +19,8 @@
 
         <header>
             <nav class="navbar navbar-expand-lg  navbar-light bg-light">
-                <a class="navbar-brand" href="#">
-                    To Do List GANG
+                <a class="navbar-brand" href="index.php">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Dragon_Ball_%28manga%2C_perfect%29_Logo.svg" alt="" width="100" height="42">
                 </a>
 
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-principal, #navbar-secondaire" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,17 +33,26 @@
                             <a class="nav-link hvr-underline-from-center" href="index.php">Liste</a>
                         </li>
                         <li class="nav-item ml-2">
-                            <a class="nav-link hvr-underline-from-center" href="index.php?action=contact">Contact</a>
+                            <a class="nav-link hvr-underline-from-center" href="index.php?action=contactPage">Contact</a>
                         </li>
                         <li class="nav-item ml-2">
-                            <a class="nav-link hvr-underline-from-center" href="index.php?action=apropos">A Propos</a>
+                            <a class="nav-link hvr-underline-from-center" href="index.php?action=aproposPage">A Propos</a>
                         </li>
                     </ul>
                 </div>
 
-                <div class="collapse navbar-collapse navbar-header justify-content-end" id="navbar-secondaire">
-                    <a href="index.php?action=connectGet" class="nav-btn btn btn-light my-2 my-sm-0 ml-1 mr-2" role="btn">Connexion</a>
-                    <a href="#" class="nav-btn btn btn-warning my-2 my-sm-0 ml-1 mr-2" role="btn">Inscription</a>
-                </div>
+                <?php if(!$_SESSION['isLoggedIn']) { ?>
+                    <div class="collapse navbar-collapse navbar-header justify-content-end" id="navbar-secondaire">
+                        <a href="index.php?action=connectPage" class="nav-btn btn btn-light my-2 my-sm-0 ml-1 mr-2" role="btn">Connexion</a>
+                        <a href="#" class="nav-btn btn btn-warning my-2 my-sm-0 ml-1 mr-2" role="btn">Inscription</a>
+                    </div>
+                <?php } else { ?>
+                    <div class="collapse navbar-collapse navbar-header justify-content-end" id="navbar-secondaire">
+                    <a href="index.php?action=profilePage" class="nav-btn btn btn-light my-2 my-sm-0 ml-1 mr-2" role="btn">Mon Profile</a>
+                        <form action="index.php?action=deconnexion" method="post">
+                            <button class="nav-btn btn btn-warning my-2 my-sm-0 ml-1 mr-2">Déconnexion</button>
+                        </form>
+                    </div>
+                <?php } ?>
             </nav>
         </header>

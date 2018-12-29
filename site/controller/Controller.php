@@ -4,14 +4,21 @@ ini_set('display_errors', 0);
 
 abstract class Controller {
 
-    public function layout($rep, $page) {
+    public function render($rep, $page, $layoutRequire=true, $data=[]) {
         global $layout;
 
-        require($rep . $layout['head']);
+        extract($data);
 
-        require($rep . $page);
+        if($layoutRequire) {
+            require($rep . $layout['head']);
 
-        require($rep . $layout['footer']);
+            require($rep . $page);
+
+            require($rep . $layout['footer']);
+        } else {
+            require($rep . $page);
+        }
+            
     }
 
 }

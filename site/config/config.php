@@ -10,3 +10,4 @@ $vues['error'] = 'views/error.php';
 $vues['contact'] = 'views/contact.php';
 $vues['apropos'] = 'views/apropos.php';
 $vues['connect'] = 'views/connect.php';
+$vues['profile'] = 'views/profile.php';

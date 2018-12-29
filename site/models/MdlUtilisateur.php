@@ -11,17 +11,26 @@ class MdlUtilisateur {
 
         if($user != null) {
             if(password_verify($password, $user->getPassword())) {
-                
-                echo ("password match");
+                $_SESSION['email'] = $user->getMail();
+
+                header('Location: index.php'); 
             } else {
-                //génerer une erreur
-                echo ("doen't match");
+                throw new Exception("Le mot de passe ou l'adresse mail est invalide");
             }
         } else {
-            //génerer une erreur
-            echo ("no user");
+            throw new Exception("Le mot de passe ou l'adresse mail est invalide");
         }
-    } 
+    }
+
+    function userProfileDate($email) {
+        $dVueEreur = [];
+        Validation::valString($email);
+        $con = new Connection('mysql:host=localhost;dbname=projetphp', 'root', '');
+        $userGateway = new UtilisateurGateway($con);
+        $user = $userGateway->findByEmail($email);
+
+        return $user;
+    }
 
     function deconnexion() {
         session_unset();
@@ -30,14 +39,15 @@ class MdlUtilisateur {
     }
 
     function isUtilisateur() {
-        if(isset($_SESSION['email'])) {
+        if(isset($_SESSION['email']) && !empty($_SESSION['email'])) {
             $email = $_SESSION['email'];
 
             Validation::valString($email);
             
-            $userGateway = new UtilisateurGateway(new Connexion('mysql:host=localhost;dbname=projetphp', 'root', ''));
+            $con = new Connection('mysql:host=localhost;dbname=projetphp', 'root', '');
+            $userGateway = new UtilisateurGateway($con);
 
-            $result = $userGateway->findByEmail($email);
+            $user = $userGateway->findByEmail($email);
 
             return true;
         } else {

@@ -5,7 +5,6 @@ ini_set('display_errors', 0);
 class GuestController extends Controller{
 
     function __construct() {
-        session_start();
 
         try {
             $action = $_REQUEST['action'];
@@ -13,16 +12,16 @@ class GuestController extends Controller{
                 case NULL:
                     $this->navigation('list');
                     break;
-                case 'contact':
+                case 'contactPage':
                     $this->navigation('contact');
                     break;
-                case 'apropos':
+                case 'aproposPage':
                     $this->navigation('apropos');
                     break; 
-                case 'connectGet':
+                case 'connectPage':
                     $this->navigationAuth('connect');
                     break;
-                case 'connectPOST':
+                case 'connect':
                     $this->connexion();
                     break;
                 default:
@@ -37,15 +36,14 @@ class GuestController extends Controller{
 
     public function navigation($page) {
         global $vues, $rep;
-        
-        $this->layout($rep, $vues[$page]);
-        //require($rep . $vues[$page]);
+
+        $this->render($rep, $vues[$page]);
     }
 
     public function navigationAuth($page) {
         global $vues, $rep;
 
-        require($rep . $vues[$page]);
+        $this->render($rep, $vues[$page], false);
     }
 
     public function connexion() {
@@ -56,12 +54,12 @@ class GuestController extends Controller{
         extract($_POST);
 
         try {
-            MdlUtilisateur::connexion($usermail, $userpass);
+            $mdlUtilisateur->connexion($usermail, $userpass);
         } catch(Exception $e) {
-            echo $e;
+            echo $e->getMessage();
         }
 
-        require($rep . $vues['connect']);
-     }
+        $this->render($rep, $vues['connect'], false);
+    }
 
 }
