@@ -8,7 +8,7 @@ class Connection extends PDO{
         $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
-    public function executeQuery($query, array $parameters=[]) {
+    public function executeQuery($query, $parameters=[]) {
         $this->_stmt=parent::prepare($query);
         
         foreach($parameters as $name => $value){

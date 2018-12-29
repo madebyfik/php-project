@@ -5,12 +5,11 @@ ini_set('display_errors', 0);
 class GuestController extends Controller{
 
     function __construct() {
-
         try {
             $action = $_REQUEST['action'];
             switch($action) {
                 case NULL:
-                    $this->navigation('list');
+                    $this->liste();
                     break;
                 case 'contactPage':
                     $this->navigation('contact');
@@ -46,20 +45,38 @@ class GuestController extends Controller{
         $this->render($rep, $vues[$page], false);
     }
 
+    public function liste() {
+        global $vues, $rep;
+
+
+        $mdlListe = new MdlListe();
+        $data = [];
+
+        $liste = $mdlListe->listePublic();
+
+        $data = array(
+            "liste" => $liste 
+        );
+
+        $this->render($rep, $vues['list'], true, $data);
+    }
+
     public function connexion() {
         global $vues, $rep;
 
         $mdlUtilisateur = new MdlUtilisateur();
-        
+        $data = [];
         extract($_POST);
 
         try {
             $mdlUtilisateur->connexion($usermail, $userpass);
         } catch(Exception $e) {
-            echo $e->getMessage();
+            $data = array (
+                "error" => $e->getMessage()
+            );
         }
 
-        $this->render($rep, $vues['connect'], false);
+        $this->render($rep, $vues['connect'], false, $data);
     }
 
 }

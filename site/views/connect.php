@@ -15,6 +15,11 @@
         <form id="formulaire-login" action="index.php?action=connect" method="POST" novalidate>
         <img class="mb-4" src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Dragon_Ball_%28manga%2C_perfect%29_Logo.svg" alt="" width="200" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+            <?php if($error) { ?> 
+            <div class="mb-3 pb-0 alert alert-danger" role="alert">
+                <p><?php echo $error ?></p> 
+            </div>   
+            <?php } ?>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-envelope"></i></span>
@@ -41,7 +46,7 @@
             </div>
 
 
-            <p class="mt-5 mb-3 text-muted">&copy; 2018 Los Igos Games - Tous droits réservés</p>
+            <p class="mt-5 mb-3 text-muted">&copy; 2018 Fifi & Roro - Tous droits réservés</p>
         </form>
 
     </body>

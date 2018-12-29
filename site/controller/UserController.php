@@ -10,7 +10,7 @@ class UserController extends GuestController {
             $action = $_REQUEST['action'];
             switch($action) {
                 case NULL:
-                    $this->navigation('list');
+                    $this->liste();
                     break;
                 case 'contactPage':
                     $this->navigation('contact');
@@ -37,7 +37,28 @@ class UserController extends GuestController {
     public function navigation($page) {
         global $vues, $rep;
 
-        $this->render($rep, $vues[$page]);
+        $data = array (
+            "isLoggedIn" => true
+        );
+
+        $this->render($rep, $vues[$page], true, $data);
+    }
+
+    public function liste() {
+        global $vues, $rep;
+
+
+        $mdlListe = new MdlListe();
+        $data = [];
+
+        $liste = $mdlListe->listePublic();
+
+        $data = array(
+            "isLoggedIn" => true,
+            "liste" => $liste 
+        );
+
+        $this->render($rep, $vues['list'], true, $data);
     }
 
     public function profile() {
@@ -45,10 +66,11 @@ class UserController extends GuestController {
 
         $mdlUtilisateur = new MdlUtilisateur();
         
-        $user = $mdlUtilisateur->userProfileDate($_SESSION['email']);
+        $user = $mdlUtilisateur->userProfile($_SESSION['email']);
 
         $data = array (
-            "user" => $user
+            "user" => $user,
+            "isLoggedIn" => true
         );
         
         $this->render($rep, $vues['profile'], true, $data);

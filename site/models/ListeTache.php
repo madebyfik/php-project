@@ -15,19 +15,19 @@ class ListeTache {
     }
 
     public function getId() {
-        return $_id;
+        return $this->_id;
     }
 
     public function getNom() {
-        return $_nom;
+        return $this->_nom;
     }
 
     public function getPublic() {
-        return $_public;
+        return $this->_public;
     }
 
     public function getIdUtilisateur() {
-        return $_idUtilisateur;
+        return $this->_idUtilisateur;
     }
 
     public function setId($id) {
@@ -43,7 +43,7 @@ class ListeTache {
     }
 
     public function setIdUtilisateur($idUtilisateur) {
-        $this->_idUtilisateur = $idUtilisateur
+        $this->_idUtilisateur = $idUtilisateur;
     }
 
 }

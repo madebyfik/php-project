@@ -14,19 +14,20 @@
     ];
     echo password_hash("fafafa", PASSWORD_BCRYPT, $options);*/
 
+    /*
+
+        - Création d'une liste public ou privé / Suppression
+        - Création d'une tache au sein d'une liste / Suppression
+        - Validation d'une tache
+
+    */
+
     $mdlUtilisateur = new MdlUtilisateur();
 
-    if(isset($_SESSION['email']) && !empty($_SESSION['email'])) {
-        $_SESSION['isLoggedIn'] = $mdlUtilisateur->isUtilisateur($_SESSION['email']);
-
-        if($_SESSION['isLoggedIn'] === false) {
-            $guestController = new GuestController(); 
-        } else {
-            $userController = new UserController();
-        }
-    
+    if($mdlUtilisateur->isUtilisateur()) {
+        $userController = new UserController();
     } else {
-        $guestController = new GuestController();
+        $guestController = new GuestController(); 
     }
     
 ?>

@@ -3,11 +3,14 @@
 class MdlUtilisateur {
 
     function connexion($email, $password) {
-        $dVueEreur = [];
-        Validation::valFormConnexion($email, $password, $dVueEreur);
+        $dVueErreur = [];
+        Validation::valFormConnexion($email, $password, $dVueErreur);
         $con = new Connection('mysql:host=localhost;dbname=projetphp', 'root', '');
         $userGateway = new UtilisateurGateway($con);
         $user = $userGateway->findByEmail($email);
+        if(count($dVueErreur) > 0) {
+            throw new Exception($dVueErreur[0]);
+        }
 
         if($user != null) {
             if(password_verify($password, $user->getPassword())) {
@@ -22,7 +25,7 @@ class MdlUtilisateur {
         }
     }
 
-    function userProfileDate($email) {
+    function userProfile($email) {
         $dVueEreur = [];
         Validation::valString($email);
         $con = new Connection('mysql:host=localhost;dbname=projetphp', 'root', '');
