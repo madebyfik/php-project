@@ -18,6 +18,12 @@ class UserController extends GuestController {
                 case 'aproposPage':
                     $this->navigation('apropos');
                     break;
+                case 'ajoutListePage':
+                    $this->ajoutListe();
+                    break;
+                case 'ajoutListe':
+                    $this->ajouterListe();
+                    break;
                 case 'profilePage':
                     $this->profile();
                     break;
@@ -38,44 +44,6 @@ class UserController extends GuestController {
         } catch (Exception $e) {
             echo $e->getMessage();
         }
-    }
-
-    public function navigation($page) {
-        global $vues, $rep;
-
-        $data = array (
-            "isLoggedIn" => true
-        );
-
-        $this->render($rep, $vues[$page], true, $data);
-    }
-
-    public function liste() {
-        global $vues, $rep;
-
-
-        $mdlListe = new MdlListe();
-        $data = [];
-
-        $liste = $mdlListe->listePublic();
-
-        $data = array(
-            "isLoggedIn" => true,
-            "liste" => $liste 
-        );
-
-        $this->render($rep, $vues['list'], true, $data);
-    }
-
-    public function supprimerListe() {
-        global $vues, $rep;
-
-        $mdlListe = new MdlListe();
-        $data = [];
-        
-        $mdlListe->supprimerListe($_POST['idListe']);
-
-        header("Location: index.php");
     }
 
     public function supprimerListePrive() {

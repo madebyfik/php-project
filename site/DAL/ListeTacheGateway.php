@@ -8,16 +8,23 @@ class ListeTacheGateway {
         $this->_con = $con;
     }
 
-    public function insert($nom, $public, $idUtilisateur) {
-        $query = 'INSERT into listetache(nom, public, idUtilisateur) VALUES(:nom, :public, :idUtilisateur)';
+    public function insertPublic($nom) {
+        $query = 'INSERT INTO list_tache (nom, public) VALUES (:nom, 1)';
 
-        $this->_con->executeQuery($query,array(
-            ':nom' => array($nom, PDO::PARAM_STR),
-            ':public' => array($public, PDO::PARAM_INT),
-            ':idUtilisateur' => array($idUtilisateur, PDO::PARAM_INT)
+        $this->_con->executeQuery($query, array(
+            ':nom' => array($nom, PDO::PARAM_STR)
         ));
     }
 
+    public function insert($nom, $public, $id_utilisateur) {
+        $query = 'INSERT INTO list_tache (nom, public, id_utilisateur) VALUES (:nom, :public, :id_utilisateur)';
+        
+        $this->_con->executeQuery($query, array(
+            ':nom' => array($nom, PDO::PARAM_STR),
+            ':public' => array($public, PDO::PARAM_BOOL),
+            ':id_utilisateur' => array($id_utilisateur, PDO::PARAM_INT)
+        ));
+    }
 
     public function update($id, $nom, $public, $idUtilisateur) {
         $query = 'UPDATE listetache SET nom=:nom, public=:public, idUtilisateur=:idUtilisateur WHERE id=:id';
@@ -97,6 +104,28 @@ class ListeTacheGateway {
             }
             
             return $arrListeTache;
+        }
+
+        return null;
+    }
+
+    public function findByName($name) {
+        $query = 'SELECT * FROM list_tache WHERE nom = :nom LIMIT 1';
+        
+        $this->_con->executeQuery($query, array(
+            ':nom' => array($name, PDO::PARAM_STR)
+        ));
+        
+        $results = $this->_con->getResults();
+
+        if(count($results) == 1) {
+            $list = new ListeTache(
+                $results[0]['id'], 
+                $results[0]['nom'], 
+                $results[0]['public'], 
+                $results[0]['id_utilisateur']
+            );
+            return $list;
         }
 
         return null;

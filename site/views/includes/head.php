@@ -30,13 +30,13 @@
                 <div class="collapse navbar-collapse justify-content-center" id="navbar-principal">
                     <ul class="navbar-nav">
                         <li class="nav-item ml-2">
-                            <a class="nav-link hvr-underline-from-center" href="index.php">Liste</a>
+                            <a class="<?php echo isset($activeListe) ? 'active ' : ''?>nav-link hvr-underline-from-center" href="index.php">Liste</a>
                         </li>
                         <li class="nav-item ml-2">
-                            <a class="nav-link hvr-underline-from-center" href="index.php?action=contactPage">Contact</a>
+                            <a class="<?php echo isset($activeContact) ? 'active ' : ''?>nav-link hvr-underline-from-center" href="index.php?action=contactPage">Contact</a>
                         </li>
                         <li class="nav-item ml-2">
-                            <a class="nav-link hvr-underline-from-center" href="index.php?action=aproposPage">A Propos</a>
+                            <a class="<?php echo isset($activeAPropos) ? 'active ' : ''?>nav-link hvr-underline-from-center" href="index.php?action=aproposPage">A Propos</a>
                         </li>
                     </ul>
                 </div>

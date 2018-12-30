@@ -14,8 +14,13 @@
             <?php } ?>
             </div>
         <?php } else { ?>
-            <h1 class="display-4 text-center mb-5">Il y'a une liste ici normalement</h1>
+            <h1 class="display-4 text-center mb-5">il y'a aucune liste public actuellement</h1>
         <?php } ?>
+    </div>
+
+    <div id="third-container"  class="container">
+        <h1 class="display-4">ajouter une nouvelle liste</h1>
+        <a id="big-ajout-btn" href="index.php?action=ajoutListePage" class="mt-2 btn btn-warning" role="btn">AJOUTER</a>   
     </div>
 
 </main>

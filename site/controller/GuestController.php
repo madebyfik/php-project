@@ -14,6 +14,12 @@ class GuestController extends Controller{
                 case 'contactPage':
                     $this->navigation('contact');
                     break;
+                case 'ajoutListePage':
+                    $this->ajoutListe();
+                    break;
+                case 'ajoutListe':
+                    $this->ajouterListe();
+                    break;
                 case 'aproposPage':
                     $this->navigation('apropos');
                     break; 
@@ -36,43 +42,10 @@ class GuestController extends Controller{
         }
     }
 
-    public function navigation($page) {
-        global $vues, $rep;
-
-        $this->render($rep, $vues[$page]);
-    }
-
     public function navigationAuth($page) {
         global $vues, $rep;
 
         $this->render($rep, $vues[$page], false);
-    }
-
-    public function liste() {
-        global $vues, $rep;
-
-
-        $mdlListe = new MdlListe();
-        $data = [];
-
-        $liste = $mdlListe->listePublic();
-
-        $data = array(
-            "liste" => $liste 
-        );
-
-        $this->render($rep, $vues['list'], true, $data);
-    }
-
-    public function supprimerListe() {
-        global $vues, $rep;
-
-        $mdlListe = new MdlListe();
-        $data = [];
-        
-        $mdlListe->supprimerListe($_POST['idListe']);
-
-        header("Location: index.php");
     }
 
     public function connexion() {
