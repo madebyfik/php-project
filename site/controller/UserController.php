@@ -20,7 +20,13 @@ class UserController extends GuestController {
                     break;
                 case 'profilePage':
                     $this->profile();
-                    break; 
+                    break;
+                case 'supprimerListe':
+                    $this->supprimerListe();
+                    break;
+                case 'supprimerListePrivate':
+                    $this->supprimerListePrive();
+                    break;
                 case 'deconnexion':
                     $this->deconnexion();
                     break;
@@ -61,15 +67,41 @@ class UserController extends GuestController {
         $this->render($rep, $vues['list'], true, $data);
     }
 
+    public function supprimerListe() {
+        global $vues, $rep;
+
+        $mdlListe = new MdlListe();
+        $data = [];
+        
+        $mdlListe->supprimerListe($_POST['idListe']);
+
+        header("Location: index.php");
+    }
+
+    public function supprimerListePrive() {
+        global $vues, $rep;
+
+        $mdlUtilisateur = new MdlUtilisateur();
+        $mdlListe = new MdlListe();
+        
+        $user = $mdlUtilisateur->userProfile($_SESSION['email']);
+        $mdlListe->supprimerListePrivate($user->getId(), $_POST['idListe']);
+
+        header('Location: index.php?action=profilePage');
+    }
+
     public function profile() {
         global $vues, $rep;
 
         $mdlUtilisateur = new MdlUtilisateur();
+        $mdlListe = new MdlListe();
         
         $user = $mdlUtilisateur->userProfile($_SESSION['email']);
+        $liste = $mdlListe->listePrivate($user->getId());
 
         $data = array (
             "user" => $user,
+            "liste" => $liste,
             "isLoggedIn" => true
         );
         

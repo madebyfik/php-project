@@ -23,6 +23,9 @@ class GuestController extends Controller{
                 case 'connect':
                     $this->connexion();
                     break;
+                case 'supprimerListe':
+                    $this->supprimerListe();
+                    break;
                 default:
                     $this->navigation('error');
                     break;
@@ -59,6 +62,17 @@ class GuestController extends Controller{
         );
 
         $this->render($rep, $vues['list'], true, $data);
+    }
+
+    public function supprimerListe() {
+        global $vues, $rep;
+
+        $mdlListe = new MdlListe();
+        $data = [];
+        
+        $mdlListe->supprimerListe($_POST['idListe']);
+
+        header("Location: index.php");
     }
 
     public function connexion() {

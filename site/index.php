@@ -16,10 +16,10 @@
 
     /*
 
-        - Création d'une liste public ou privé / Suppression
+        - Création d'une liste public ou privé /
         - Création d'une tache au sein d'une liste / Suppression
         - Validation d'une tache
-
+    
     */
 
     $mdlUtilisateur = new MdlUtilisateur();

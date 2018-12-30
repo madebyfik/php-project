@@ -3,6 +3,19 @@ body
     background-color: #F2F2F2;
 }
 
+html, body 
+{
+
+    height: 100%;
+
+}
+
+main
+{
+    min-height: 60%;
+}
+
+
 /*
 
 HEADER - NAVBAR
@@ -136,46 +149,7 @@ NEWS
 
 */
 
-.photo-news
-{
-    overflow: hidden;
-}
-
-.photo-news img
-{
-    height: 150px;
-    width: 100%;
-    overflow: hidden;
-    max-width: 100%;
-  
-    transition: all 0.3s;
-}
-
-.photo-news:hover img {
-  transform: scale(1.1);
-}
-
-.titre-news
-{
-    font-size: 20px;
-}
-
-.three-news-div
-{
-    margin-bottom: 8%;
-}
-
-.presentation-news
+.listediv
 {
     margin-bottom: 30px;
-}
-
-.date-news
-{
-    font-style: italic;
-}
-
-.pagination-nav
-{
-    text-align: center;
 }
