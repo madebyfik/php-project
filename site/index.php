@@ -7,7 +7,7 @@
 
     require_once(__DIR__ . '/config/Validation.php');
 
-    Autoload::charger();
+    Autoload::load();
 
     /*$options = [
         'cost' => 12,
@@ -21,10 +21,10 @@
     
     */
 
-    $mdlUtilisateur = new MdlUtilisateur();
+    $userModel = new UserModel();
     $data = [];
 
-    if($mdlUtilisateur->isUtilisateur()) {
+    if($userModel->isUser()) {
         $data['isLoggedIn'] = true;
         $userController = new UserController();
     } else {
