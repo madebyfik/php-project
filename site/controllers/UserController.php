@@ -44,7 +44,7 @@ class UserController extends Controller {
         $listModel = new ListModel();
         
         $user = $userModel->userProfile($_SESSION['email']);
-        $listModel->supprimerListePrivate($user->getId(), $_POST['idListe']);
+        $listModel->deleteListPrivate($user->getId(), $_POST['idListe']);
 
         header('Location: index.php?action=profilePage');
     }
@@ -56,7 +56,7 @@ class UserController extends Controller {
         $listModel = new ListModel();
         
         $user = $userModel->userProfile($_SESSION['email']);
-        $liste = $listModel->listePrivate($user->getId());
+        $liste = $listModel->listPrivate($user->getId());
 
         $data = array (
             "user" => $user,

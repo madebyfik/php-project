@@ -42,13 +42,13 @@ abstract class Controller {
                     $user = $userModel->userProfile($_SESSION['email']);
                     $privatePublic = $privatePublic === '0' ? false : true;
                     
-                    $listModel->ajouterListe($listeName, $privatePublic, $user->getId());
+                    $listModel->addList($listeName, $privatePublic, $user->getId());
                 } catch(Exception $e) {
                     $data['error'] = $e->getMessage();
                 }
             } else {
                 try {
-                    $listModel->ajouterListePublic($listeName);
+                    $listModel->addListPublic($listeName);
                 } catch(Exception $e) {
                     $data['error'] = $e->getMessage();
                 }
@@ -63,7 +63,7 @@ abstract class Controller {
 
         $listModel = new ListModel();
 
-        $liste = $listModel->listePublic();
+        $liste = $listModel->listPublic();
 
         $data["liste"] = $liste;
         $data["activeListe"] = true;
@@ -76,7 +76,7 @@ abstract class Controller {
 
         $listModel = new ListModel();
         
-        $listModel->supprimerListe($_POST['idListe']);
+        $listModel->deleteList($_POST['idListe']);
 
         header("Location: index.php");
     }

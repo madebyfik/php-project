@@ -6,7 +6,7 @@ class UserModel {
         $dVueErreur = [];
         Validation::valFormConnexion($email, $password, $dVueErreur);
         $con = new Connection('mysql:host=localhost;dbname=projetphp', 'root', '');
-        $userGateway = new UtilisateurGateway($con);
+        $userGateway = new UserGateway($con);
         $user = $userGateway->findByEmail($email);
         if(count($dVueErreur) > 0) {
             throw new Exception($dVueErreur[0]);
@@ -29,7 +29,7 @@ class UserModel {
         $dVueEreur = [];
         Validation::valString($email);
         $con = new Connection('mysql:host=localhost;dbname=projetphp', 'root', '');
-        $userGateway = new UtilisateurGateway($con);
+        $userGateway = new UserGateway($con);
         $user = $userGateway->findByEmail($email);
 
         return $user;
@@ -48,7 +48,7 @@ class UserModel {
             Validation::valString($email);
             
             $con = new Connection('mysql:host=localhost;dbname=projetphp', 'root', '');
-            $userGateway = new UtilisateurGateway($con);
+            $userGateway = new UserGateway($con);
 
             $user = $userGateway->findByEmail($email);
 

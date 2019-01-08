@@ -6,10 +6,10 @@ class ListModel {
 
     function __construct() {
         $con = new Connection('mysql:host=localhost;dbname=projetphp', 'root', '');
-        $this->_listeGateway = new ListeTacheGateway($con);
+        $this->_listeGateway = new ListGateway($con);
     }
 
-    function ajouterListePublic($nom) {
+    function addListPublic($nom) {
         $dVueErreur = [];
         Validation::valFormListTache($nom, $dVueErreur);
         
@@ -27,7 +27,7 @@ class ListModel {
         }
     }
 
-    function ajouterListe($nom, $public, $utilisateurId) {
+    function addList($nom, $public, $utilisateurId) {
         $dVueErreur = [];
         Validation::valFormListTache($nom, $dVueErreur);
 
@@ -45,20 +45,20 @@ class ListModel {
         }
     }
 
-    function supprimerListe($id) {
+    function deleteList($id) {
         Validation::valString($id);
         
         $liste = $this->_listeGateway->delete($id);
     }
 
-    function supprimerListePrivate($userId, $id) {
+    function deleteListPrivate($userId, $id) {
         Validation::valString($userId);
         Validation::valString($id);
 
         $liste = $this->_listeGateway->deletePrivate($userId, $id);
     }
 
-    function listePrivate($id) {
+    function listPrivate($id) {
         Validation::valString($id);
 
         $liste = $this->_listeGateway->getPrivate($id);
@@ -66,7 +66,7 @@ class ListModel {
         return $liste;
     }
 
-    function listePublic() {
+    function listPublic() {
         $liste = $this->_listeGateway->getAllPublic();
         return $liste;
     }
