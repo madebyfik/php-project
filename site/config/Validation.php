@@ -43,14 +43,14 @@ class Validation {
     }
 
     static function valEmail(&$email, &$errorArray) {
-        if(isset($mail) && !empty($mail)) {
-            if($mail != filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+        if(isset($email) && !empty($email)) {
+            if($email != filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $errorArray[] = "Mail is incorrect";
-                $mail = "";
+                $email = "";
             }   
         } else {
             $errorArray[] = "Mail is incorrect";
-            $mail = "";
+            $email = "";
         }
     }
 
