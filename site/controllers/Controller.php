@@ -32,7 +32,7 @@ abstract class Controller {
 
         
         $userModel = new UserModel();
-        $listModel = new ListModel();
+        $listTaskModel = new ListTaskModel();
 
         if(isset($_POST['listeName']) && isset($_POST['privatePublic'])) {
             extract($_POST);
@@ -42,13 +42,13 @@ abstract class Controller {
                     $user = $userModel->userProfile($_SESSION['email']);
                     $privatePublic = $privatePublic === '0' ? false : true;
                     
-                    $listModel->addList($listeName, $privatePublic, $user->getId());
+                    $listTaskModel->addList($listeName, $privatePublic, $user->getId());
                 } catch(Exception $e) {
                     $data['error'] = $e->getMessage();
                 }
             } else {
                 try {
-                    $listModel->addListPublic($listeName);
+                    $listTaskModel->addListPublic($listeName);
                 } catch(Exception $e) {
                     $data['error'] = $e->getMessage();
                 }
@@ -61,11 +61,11 @@ abstract class Controller {
     public function list() {
         global $vues, $rep, $data;
 
-        $listModel = new ListModel();
+        $listTaskModel = new ListTaskModel();
 
-        $liste = $listModel->listPublic();
+        $listTask = $listTaskModel->listPublic();
 
-        $data["liste"] = $liste;
+        $data["liste"] = $listTask;
         $data["activeListe"] = true;
 
         $this->render($rep, $vues['list'], true, $data);
@@ -74,9 +74,9 @@ abstract class Controller {
     public function deleteList() {
         global $vues, $rep, $data;
 
-        $listModel = new ListModel();
+        $listTaskModel = new ListTaskModel();
         
-        $listModel->deleteList($_POST['idListe']);
+        $listTaskModel->deleteList($_POST['idListe']);
 
         header("Location: index.php");
     }

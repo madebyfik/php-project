@@ -4,7 +4,7 @@ ini_set('display_errors', 0);
 
 class GuestController extends Controller{
 
-    function __construct() {
+    public function __construct() {
         try {
             $action = $_REQUEST['action'];
             switch($action) {

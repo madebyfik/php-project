@@ -1,6 +1,6 @@
 <?php
 
-class ListGateway {
+class ListTaskGateway {
 
     private $_con;
 
@@ -65,10 +65,10 @@ class ListGateway {
         $results = $this->_con->getResults();
 
         if(count($results) > 0) {
-            $arrListeTache = [];
+            $listTaskArray = [];
 
             foreach($results as $liste) {
-                $arrListeTache[] = new ListTask(
+                $listTaskArray[] = new ListTask(
                     $liste['id'], 
                     $liste['nom'], 
                     $liste['public'], 
@@ -76,7 +76,7 @@ class ListGateway {
                 );
             }
             
-            return $arrListeTache;
+            return $listTaskArray ;
         }
 
         return null;
@@ -92,10 +92,10 @@ class ListGateway {
         $results = $this->_con->getResults();
 
         if(count($results) > 0) {
-            $arrListeTache = [];
+            $listTaskArray = [];
 
             foreach($results as $liste) {
-                $arrListeTache[] = new ListTask(
+                $listTaskArray[] = new ListTask(
                     $liste['id'], 
                     $liste['nom'], 
                     $liste['public'], 
@@ -103,7 +103,7 @@ class ListGateway {
                 );
             }
             
-            return $arrListeTache;
+            return $listTaskArray;
         }
 
         return null;
@@ -119,13 +119,13 @@ class ListGateway {
         $results = $this->_con->getResults();
 
         if(count($results) == 1) {
-            $list = new ListTask(
+            $listTask = new ListTask(
                 $results[0]['id'], 
                 $results[0]['nom'], 
                 $results[0]['public'], 
                 $results[0]['id_utilisateur']
             );
-            return $list;
+            return $listTask;
         }
 
         return null;

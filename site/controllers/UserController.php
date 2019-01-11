@@ -4,7 +4,7 @@ ini_set('display_errors', 0);
 
 class UserController extends Controller {
 
-    function __construct() {
+    public function __construct() {
 
         try {
             $action = $_REQUEST['action'];
@@ -41,10 +41,10 @@ class UserController extends Controller {
         global $vues, $rep;
 
         $userModel = new UserModel();
-        $listModel = new ListModel();
+        $listTaskModel = new ListTaskModel();
         
         $user = $userModel->userProfile($_SESSION['email']);
-        $listModel->deleteListPrivate($user->getId(), $_POST['idListe']);
+        $listTaskModel->deleteListPrivate($user->getId(), $_POST['idListe']);
 
         header('Location: index.php?action=profilePage');
     }
@@ -53,15 +53,15 @@ class UserController extends Controller {
         global $vues, $rep;
 
         $userModel = new UserModel();
-        $listModel = new ListModel();
+        $listTaskModel = new ListTaskModel();
         
         try {
             $user = $userModel->userProfile($_SESSION['email']);
-            $liste = $listModel->listPrivate($user->getId());
+            $listTask = $listTaskModel->listPrivate($user->getId());
 
             $data = array (
                 "user" => $user,
-                "liste" => $liste,
+                "liste" => $listTask,
                 "isLoggedIn" => true
             );
         
