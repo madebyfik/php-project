@@ -10,13 +10,13 @@ class ListModel {
     }
 
     function addListPublic($nom) {
-        $dVueErreur = [];
-        Validation::valFormListTache($nom, $dVueErreur);
+        $errorArray = [];
+        Validation::valFormListTask($nom, $errorArray);
         
         $list = $this->_listeGateway->findByName($nom);
 
-        if(count($dVueErreur) > 0) {
-            throw new Exception($dVueErreur[0]);
+        if(count($errorArray) > 0) {
+            throw new Exception($errorArray[0]);
         }
 
         if($list == null) {
@@ -28,8 +28,8 @@ class ListModel {
     }
 
     function addList($nom, $public, $utilisateurId) {
-        $dVueErreur = [];
-        Validation::valFormListTache($nom, $dVueErreur);
+        $errorArray = [];
+        Validation::valFormListTask($nom, $dVueErreur);
 
         $list = $this->_listeGateway->findByName($nom);
 

@@ -2,15 +2,22 @@
 
 class UserModel {
 
-    function connect($email, $password) {
-        $dVueErreur = [];
-        Validation::valFormConnexion($email, $password, $dVueErreur);
+    private $_userGateway;
+
+    public function __construct() {
         $con = new Connection('mysql:host=localhost;dbname=projetphp', 'root', '');
-        $userGateway = new UserGateway($con);
-        $user = $userGateway->findByEmail($email);
-        if(count($dVueErreur) > 0) {
-            throw new Exception($dVueErreur[0]);
+        $this->_userGateway = new UserGateway($con);
+    }
+
+    public function connect($email, $password) {
+        $errorArray = [];
+        Validation::valFormConnection($email, $password, $errorArray);
+        
+        if(count($errorArray) > 0) {
+            throw new Exception($errorArray[0]);
         }
+
+        $user = $this->_userGateway->findByEmail($email);
 
         if($user != null) {
             if(password_verify($password, $user->getPassword())) {
@@ -18,39 +25,46 @@ class UserModel {
 
                 header('Location: index.php'); 
             } else {
-                throw new Exception("Le mot de passe ou l'adresse mail est invalide");
+                throw new Exception("Password or mail incorrect");
             }
         } else {
-            throw new Exception("Le mot de passe ou l'adresse mail est invalide");
+            throw new Exception("Password or mail incorrect");
         }
     }
 
-    function userProfile($email) {
-        $dVueEreur = [];
-        Validation::valString($email);
-        $con = new Connection('mysql:host=localhost;dbname=projetphp', 'root', '');
-        $userGateway = new UserGateway($con);
-        $user = $userGateway->findByEmail($email);
+    public function userProfile($email) {
+        $errorArray = [];
+
+        Validation::valEmail($email, $errorArray);
+
+        if(count($errorArray) > 0) {
+            throw new Exception($errorArray[0]);
+        }
+        
+        $user = $this->_userGateway->findByEmail($email);
 
         return $user;
     }
 
-    function disconnect() {
+    public function disconnect() {
         session_unset();
         session_destroy();
         $_SESSION = array();  
     }
 
-    function isUser() {
+    public function isUser() {
         if(isset($_SESSION['email']) && !empty($_SESSION['email'])) {
             $email = $_SESSION['email'];
 
-            Validation::valString($email);
-            
-            $con = new Connection('mysql:host=localhost;dbname=projetphp', 'root', '');
-            $userGateway = new UserGateway($con);
+            $errorArray = [];
 
-            $user = $userGateway->findByEmail($email);
+            Validation::valEmail($email, $errorArray);
+
+            if(count($errorArray) > 0) {
+                throw new Exception($errorArray[0]);
+            }
+            
+            $user = $this->_userGateway->findByEmail($email);
 
             return true;
         } else {

@@ -24,7 +24,13 @@
     $userModel = new UserModel();
     $data = [];
 
-    if($userModel->isUser()) {
+    try {
+        $userBoolean = $userModel->isUser();
+    } catch (Exception $e) {
+        $userBoolean = false;
+    }
+
+    if($userBoolean) {
         $data['isLoggedIn'] = true;
         $userController = new UserController();
     } else {

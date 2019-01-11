@@ -55,16 +55,20 @@ class UserController extends Controller {
         $userModel = new UserModel();
         $listModel = new ListModel();
         
-        $user = $userModel->userProfile($_SESSION['email']);
-        $liste = $listModel->listPrivate($user->getId());
+        try {
+            $user = $userModel->userProfile($_SESSION['email']);
+            $liste = $listModel->listPrivate($user->getId());
 
-        $data = array (
-            "user" => $user,
-            "liste" => $liste,
-            "isLoggedIn" => true
-        );
+            $data = array (
+                "user" => $user,
+                "liste" => $liste,
+                "isLoggedIn" => true
+            );
         
-        $this->render($rep, $vues['profile'], true, $data);
+            $this->render($rep, $vues['profile'], true, $data);
+        } catch (Exception $e) {
+            header("Location: index.php");
+        }
     }
 
     public function disconnect() {

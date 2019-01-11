@@ -10,7 +10,7 @@ class Validation {
 
     }
 
-    static function valFormConnexion(&$mail, &$password, &$dVueErreur) {
+    static function valFormConnection(&$mail, &$password, &$dVueErreur) {
         if(isset($mail) && !empty($mail)) {
             if($mail != filter_var($mail, FILTER_VALIDATE_EMAIL)) {
                 $dVueErreur[] = "Adresse mail incorrecte";
@@ -32,15 +32,27 @@ class Validation {
         }
     }
 
-    static function valFormListTache(&$nom, &$dVueErreur) {
+    static function valFormListTask(&$nom, &$dVueErreur) {
         if(isset($nom) && !empty($nom)) {
             if($nom != filter_var($nom, FILTER_SANITIZE_STRING)) {
                 $dVueErreur[] = "Nom de liste incorrecte";
                 $nom = "";
             }
         } else {
-            $dVueErreur[] = "Veuillez entrer une adresse mail";
+            $dVueErreur[] = "Nom de liste incorrecte";
             $nom = "";
+        }
+    }
+
+    static function valEmail(&$email, &$dVueErreur) {
+        if(isset($mail) && !empty($mail)) {
+            if($mail != filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+                $dVueErreur[] = "Adresse mail incorrecte";
+                $mail = "";
+            }   
+        } else {
+            $dVueErreur[] = "Veuillez entrer une adresse mail";
+            $mail = "";
         }
     }
 
