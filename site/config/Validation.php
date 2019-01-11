@@ -3,55 +3,53 @@
 class Validation {
 
     static function valAction($action) {
-
         if (!isset($action)) {
-            throw new Exception('pas d\'action');
+            throw new Exception('There isn\'t any action');
         }
-
     }
 
-    static function valFormConnection(&$mail, &$password, &$dVueErreur) {
-        if(isset($mail) && !empty($mail)) {
-            if($mail != filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-                $dVueErreur[] = "Adresse mail incorrecte";
-                $mail = "";
+    static function valFormConnection(&$email, &$password, &$errorArray) {
+        if(isset($email) && !empty($email)) {
+            if($email != filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $errorArray[] = "Mail is incorrect";
+                $email = "";
             }   
         } else {
-            $dVueErreur[] = "Veuillez entrer une adresse mail";
-            $mail = "";
+            $errorArray[] = "Mail is incorrect";
+            $email = "";
         }
 
         if(isset($password) && !empty($password)) {
             if($password != filter_var($password, FILTER_SANITIZE_STRING)) {
-                $dVueErreur[] = "Mot de passe incorrecte";
+                $errorArray[] = "Password is incorrect";
                 $password = "";
             }
         } else {
-            $dVueErreur[] = "Veuillez entrer un mot de passe";
+            $errorArray[] = "Mail is incorrect";
             $password = "";
         }
     }
 
-    static function valFormListTask(&$nom, &$dVueErreur) {
-        if(isset($nom) && !empty($nom)) {
-            if($nom != filter_var($nom, FILTER_SANITIZE_STRING)) {
-                $dVueErreur[] = "Nom de liste incorrecte";
-                $nom = "";
+    static function valFormListTask(&$name, &$errorArray) {
+        if(isset($name) && !empty($name)) {
+            if($name != filter_var($name, FILTER_SANITIZE_STRING)) {
+                $errorArray[] = "List name is incorrect";
+                $name = "";
             }
         } else {
-            $dVueErreur[] = "Nom de liste incorrecte";
-            $nom = "";
+            $errorArray[] = "List name is incorrect";
+            $name = "";
         }
     }
 
-    static function valEmail(&$email, &$dVueErreur) {
+    static function valEmail(&$email, &$errorArray) {
         if(isset($mail) && !empty($mail)) {
             if($mail != filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-                $dVueErreur[] = "Adresse mail incorrecte";
+                $errorArray[] = "Mail is incorrect";
                 $mail = "";
             }   
         } else {
-            $dVueErreur[] = "Veuillez entrer une adresse mail";
+            $errorArray[] = "Mail is incorrect";
             $mail = "";
         }
     }
