@@ -4,7 +4,7 @@ class UserGateway {
 
     private $_con;
 
-    function __construct($con) {
+    public function __construct($con) {
         $this->_con = $con;
     }
 
@@ -27,7 +27,7 @@ class UserGateway {
             ':prenom' => array($prenom, PDO::PARAM_STR),
             ':mail' => array($mail, PDO::PARAM_STR),
             ':password' => array($password, PDO::PARAM_STR),
-            'id' => array($id,PDO::PARAM_INT)
+            ':id' => array($id,PDO::PARAM_INT)
         ));
     }
     
@@ -35,7 +35,7 @@ class UserGateway {
         $query = 'DELETE FROM utilisateur WHERE id=:id';
 
         $this->_con->executeQuery($query,array(
-                'id' => array($id,PDO::PARAM_INT)
+                ':id' => array($id,PDO::PARAM_INT)
         ));
     }
 
