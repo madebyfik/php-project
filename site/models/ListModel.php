@@ -9,40 +9,30 @@ class ListModel {
         $this->_listeGateway = new ListGateway($con);
     }
 
-    function addListPublic($nom) {
+    function addListPublic($name) {
         $errorArray = [];
-        Validation::valFormListTask($nom, $errorArray);
-        
-        $list = $this->_listeGateway->findByName($nom);
+        Validation::valFormListTask($name, $errorArray);
 
         if(count($errorArray) > 0) {
             throw new Exception($errorArray[0]);
         }
 
-        if($list == null) {
-            $this->_listeGateway->insertPublic($nom);
-            header('Location: index.php');
-        } else {
-            throw new Exception("Liste déjà existante sous se nom");
-        }
+        $this->_listeGateway->insertPublic($name);
+        header('Location: index.php');
     }
 
-    function addList($nom, $public, $utilisateurId) {
+    function addList($name, $public, $userId) {
         $errorArray = [];
-        Validation::valFormListTask($nom, $dVueErreur);
+        Validation::valFormListTask($name, $errorArray);
 
-        $list = $this->_listeGateway->findByName($nom);
+        $list = $this->_listeGateway->findByName($name);
 
-        if(count($dVueErreur) > 0) {
-            throw new Exception($dVueErreur[0]);
+        if(count($errorArray) > 0) {
+            throw new Exception($errorArray[0]);
         }
 
-        if($list == null) {
-            $this->_listeGateway->insert($nom, $public, $utilisateurId);
-            header('Location: index.php');
-        } else {
-            throw new Exception("Liste déjà existante sous se nom");
-        }
+        $this->_listeGateway->insert($name, $public, $userId);
+        header('Location: index.php');
     }
 
     function deleteList($id) {
@@ -68,6 +58,7 @@ class ListModel {
 
     function listPublic() {
         $liste = $this->_listeGateway->getAllPublic();
+        
         return $liste;
     }
 
