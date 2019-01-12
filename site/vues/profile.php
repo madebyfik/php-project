@@ -11,13 +11,13 @@
                     <h1 class="titre-liste"><?php echo $lEl->getNom() ; ?></h1>
                     <form action="index.php?action=supprimerListePrivate" method="post">
                         <input type="hidden" value="<?php echo $lEl->getId(); ?>" id="idListe" name="idListe">
-                        <button class="nav-btn btn btn-warning my-2 my-sm-0 ml-1 mr-2">Supprimer</button>
+                        <button class="nav-btn btn btn-warning my-2 my-sm-0 ml-1 mr-2">Delete</button>
                     </form>
                 </div>     
             <?php } ?>
             </div>
         <?php } else { ?>
-            <h1 class="display-4 text-center mb-5">Il y'a une liste ici normalement</h1>
+            <h1 class="display-4 text-center mb-5">There should be a list here</h1>
         <?php } ?>
     </div>
 

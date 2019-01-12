@@ -11,7 +11,7 @@
                     <a class="footer-links hvr-icon-grow ml-2" href="https://www.youtube.com/channel/UCqNufmVf1OBtmIFo3_pSSpw" target="_blank"><i class="hvr-icon fab fa-youtube"></i></a>
                 </div>
                 <div id="copyright-footer">
-                    <p>© 2018 Fifi & Roro - Tous droits réservés</p>
+                    <p>© 2018 Fifi & Roro - All rights reserved</p>
                 </div>
             </div>
         </footer>
