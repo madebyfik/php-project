@@ -5,7 +5,8 @@ class TaskModel {
     private $_taskGateway;
 
     public function __construct() {
-        $con = new Connection('mysql:host=localhost;dbname=projetphp', 'root', '');
+        global $bdd;
+        $con = new Connection('mysql:host=localhost;dbname=projetphp', $bdd["username"], $bdd["password"]);
         $this->_taskGateway = new TaskGateway($con);
     }
 

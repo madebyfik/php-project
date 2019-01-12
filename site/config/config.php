@@ -2,6 +2,9 @@
 
 $rep = __DIR__ . '/../';
 
+$bdd["username"] = "root";
+$bdd["password"] = "";
+
 $layout['head'] = 'vues/includes/head.php';
 $layout['footer'] = 'vues/includes/footer.php';
 
