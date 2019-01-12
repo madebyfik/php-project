@@ -109,6 +109,23 @@ class ListTaskGateway {
         return null;
     }
 
+    public function getListById($id) {
+        $query = 'SELECT * FROM list_tache WHERE id = :id';
+
+        $this->_con->executeQuery($query, array(
+            ':id' => array($id, PDO::PARAM_INT)
+        ));
+
+        $results = $this->_con->getResults();
+
+        if(count($results) > 0) {
+            $results = $results[0];
+            return new ListTask($results['id'], $results['nom'], $results['public'], $results['idUtilisateur']);
+        }
+
+        return null;
+    }
+
     public function findByName($name) {
         $query = 'SELECT * FROM list_tache WHERE nom = :nom LIMIT 1';
         

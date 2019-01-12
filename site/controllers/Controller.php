@@ -30,12 +30,12 @@ abstract class Controller {
     public function addList() {
         global $vues, $rep, $data;
 
+        extract($_POST);
         
         $userModel = new UserModel();
         $listTaskModel = new ListTaskModel();
 
-        if(isset($_POST['listeName']) && isset($_POST['privatePublic'])) {
-            extract($_POST);
+        if(isset($listeName) && isset($privatePublic)) {
 
             if(isset($data['isLoggedIn'])) {
                 try {
@@ -82,7 +82,74 @@ abstract class Controller {
     public function displayTasks() {
         global $vues, $rep, $data;
 
+        extract($_GET);
+
+        $listTaskModel = new ListTaskModel();
+        $userModel = new UserModel();
+        $taskModel = new TaskModel();
+
+        try {
+            $listTask = $listTaskModel->isList($listId);
+
+            if($listTask->getPublic() === '1') {
+                $taskArray = $taskModel->getTask($listId);
+                $data["listTask"] = $listTask;
+                $data["tasks"] = $taskArray;
+                $data["listId"] = $listTask->getId();
+            } else {
+                
+            }
+        } catch(Exception $e) {
+            header("Location: index.php");
+        }
+
         $this->render($rep, $vues['tasks'], true, $data);
+    }
+
+    public function addTask() {
+        global $vues, $rep, $data;
+
+        extract($_GET);
+        extract($_POST);
+        
+        $userModel = new UserModel();
+        $listTaskModel = new ListTaskModel();
+        $taskModel = new TaskModel();
+        
+        try {
+            $listTask = $listTaskModel->isList($listId);
+            $data["listTask"] = $listTask;
+        } catch(Exception $e) {
+            header("Location: index.php");
+        }
+
+        if(isset($taskName) && isset($taskDescription)) {
+            
+            if($listTask->getPublic() === '1') {
+                try {
+                    $taskModel->addTask($taskName, $taskDescription, $listTask->getId());
+                } catch (Exception $e) {
+                    $data['error'] = $e->getMessage();
+                }
+            }
+
+            /*if(isset($data['isLoggedIn'])) {
+                try {
+                    $user = $userModel->userProfile($_SESSION['email']);
+                    $listTaskModel->addList($listeName, $privatePublic, $user->getId());
+                } catch(Exception $e) {
+                    $data['error'] = $e->getMessage();
+                }
+            } else {
+                try {
+                    $listTaskModel->addListPublic($listeName);
+                } catch(Exception $e) {
+                    $data['error'] = $e->getMessage();
+                }
+            }*/
+        }
+
+        $this->render($rep, $vues['addTask'], false, $data);
     }
 
 }

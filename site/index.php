@@ -9,6 +9,7 @@
 
     Autoload::load();
 
+    
     $userModel = new UserModel();
     $data = [];
 

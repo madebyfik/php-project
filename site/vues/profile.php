@@ -9,10 +9,10 @@
             <?php foreach($liste as $lEl) { ?>
                 <div class="col-md-4 listediv">
                     <h1 class="titre-liste"><?php echo $lEl->getNom() ; ?></h1>
-                    <a class="nav-btn btn btn-warning my-2 my-sm-0 ml-1 mr-2" role="btn" href="index.php?action=tasks&list=<?php echo $lEl->getId(); ?>">Display tasks</a>
+                    <a class="btn-style btn btn-warning my-2 my-sm-0 ml-1 mr-2" role="btn" href="index.php?action=tasks&listId=<?php echo $lEl->getId(); ?>">display tasks</a>
                     <form class="mt-1" action="index.php?action=deleteListPrivate" method="post">
                         <input type="hidden" value="<?php echo $lEl->getId(); ?>" id="idListe" name="idListe">
-                        <button class="nav-btn btn btn-warning my-2 my-sm-0 ml-1 mr-2">Delete</button>
+                        <button class="btn-style btn btn-warning my-2 my-sm-0 ml-1 mr-2">delete</button>
                     </form>
                 </div>     
             <?php } ?>

@@ -6,10 +6,10 @@
             <?php foreach($liste as $lEl) { ?>
                 <div class="col-md-4 listediv">
                     <h1 class="titre-liste"><?php echo substr($lEl->getNom(), 0, 25) ; ?></h1>
-                    <a class="nav-btn btn btn-warning my-2 my-sm-0 ml-1 mr-2" role="btn" href="index.php?action=tasks&list=<?php echo $lEl->getId(); ?>">Display tasks</a>
+                    <a class="btn-style btn btn-warning my-2 my-sm-0 ml-1 mr-2" role="btn" href="index.php?action=tasks&listId=<?php echo $lEl->getId(); ?>">display tasks</a>
                     <form class="mt-1" action="index.php?action=deleteList" method="post">
                         <input type="hidden" value="<?php echo $lEl->getId(); ?>" id="idListe" name="idListe">
-                        <button class="nav-btn btn btn-warning my-2 my-sm-0 ml-1 mr-2">Remove</button>
+                        <button class="btn-style btn btn-warning my-2 my-sm-0 ml-1 mr-2">remove</button>
                     </form>
                 </div>     
             <?php } ?>
@@ -20,8 +20,7 @@
     </div>
 
     <div id="third-container"  class="container">
-        <h1 class="display-4">add a new list</h1>
-        <a id="big-ajout-btn" href="index.php?action=addList" class="mt-2 btn btn-warning" role="btn">ADD</a>   
+        <a href="index.php?action=addList" class="btn-style mt-2 btn btn-warning" role="btn">add a new list</a>   
     </div>
 
 </main>
