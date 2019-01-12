@@ -42,12 +42,13 @@ class GuestController extends Controller{
     public function connect() {
         global $vues, $rep;
 
+        extract($_POST);
+
         $userModel = new UserModel();
         $data = [];
 
-        if(isset($_POST['usermail']) && isset($_POST['userpass'])) {
-            extract($_POST);
-
+        if(isset($usermail) && isset($userpass)) {
+            
             try {
                 $userModel->connect($usermail, $userpass);
             } catch(Exception $e) {
@@ -63,14 +64,15 @@ class GuestController extends Controller{
     public function register(){
         global $vues, $rep;
 
+        extract($_POST);
+
         $data =[];
         $userModel = new UserModel();
         
-        if(isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['mail']) && isset($_POST['password'])){
-            extract($_POST);
+        if(isset($usermail) && isset($username) && isset($usersurname) && isset($userpass) && isset($userpassconf)){
 
             try{
-                $userModel->register($nom,$prenom,$mail,$password);
+                $userModel->register($usermail, $username, $usersurname, $userpass, $userpassconf);
             } catch(Exception $e){
                 $data = array(
                     "error" => $e->getMessage()

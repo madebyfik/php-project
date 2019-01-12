@@ -8,13 +8,13 @@ class UserGateway {
         $this->_con = $con;
     }
 
-    public function insert($nom, $prenom, $mail, $password) {
-        $query = 'INSERT INTO utilisateur (nom, prenom, mail, password)  VALUES(:nom, :prenom, :mail, :password)';
+    public function insert($nom, $prenom, $email, $password) {
+        $query = 'INSERT INTO utilisateur (nom, prenom, mail, password)  VALUES(:nom, :prenom, :email, :password)';
 
         $this->_con->executeQuery($query, array(
             ':nom' => array($nom, PDO::PARAM_STR),
             ':prenom' => array($prenom, PDO::PARAM_STR),
-            ':mail' => array($mail, PDO::PARAM_STR),
+            ':email' => array($email, PDO::PARAM_STR),
             ':password' => array($password, PDO::PARAM_STR)
         ));
     }

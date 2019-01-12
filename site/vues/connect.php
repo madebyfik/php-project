@@ -28,6 +28,7 @@
                 </div>
                 <input class="form-control" type="email" name="usermail" id="usermail" placeholder="user@example.com" aria-label="User Email">
             </div>
+            
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-key"></i></span>
@@ -38,7 +39,7 @@
             <button type="submit" class="btn-block btn-lg btn btn-warning">Login</button>
 
             <div class="mt-2">
-                <p><a href="#">Register</a></p>
+                <p><a href="index.php?action=register">Register</a></p>
             </div>
 
 

@@ -38,7 +38,7 @@
                 <?php if(!$isLoggedIn) { ?>
                     <div class="collapse navbar-collapse navbar-header justify-content-end" id="navbar-secondaire">
                         <a href="index.php?action=connect" class="nav-btn btn btn-light my-2 my-sm-0 ml-1 mr-2" role="btn">Login</a>
-                        <a href="#" class="nav-btn btn btn-warning my-2 my-sm-0 ml-1 mr-2" role="btn">Register</a>
+                        <a href="index.php?action=register" class="nav-btn btn btn-warning my-2 my-sm-0 ml-1 mr-2" role="btn">Register</a>
                     </div>
                 <?php } else { ?>
                     <div class="collapse navbar-collapse navbar-header justify-content-end" id="navbar-secondaire">

@@ -12,3 +12,4 @@ $vues['connect'] = 'vues/connect.php';
 $vues['addList'] = 'vues/addList.php';
 $vues['tasks'] = 'vues/tasks.php';
 $vues['addTask'] = 'vues/addTask.php';
+$vues['register'] = 'vues/register.php';

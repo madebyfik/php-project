@@ -32,16 +32,33 @@ class UserModel {
         }
     }
 
-    public function register($nom,$prenom,$mail,$password){
+    public function register($email, $name, $surname, $password, $passwordConfirmation){
         $errorArray = [];
+        Validation::valFormRegister($email, $name, $surname, $password, $passwordConfirmation, $errorArray);
 
-        Validation::valFormRegister($name,$prenom,$mail,$password,$errorArray);
-        if (count($errorArray)>0){
+        if (count($errorArray) > 0){
             throw new Exception($errorArray[0]);
         }
 
-        $this->_UserGateway->insert($nom,$prenom,$mail,$password);
-        header('Location: index.php');
+        $user = $this->_userGateway->findByEmail($email);
+
+        if($user === null) {
+            if($password === $passwordConfirmation) {
+                $options = [
+                    'cost' => 12,
+                ];
+
+                $passHash = password_hash($password, PASSWORD_BCRYPT, $options);
+                var_dump($email);
+                $this->_userGateway->insert($surname, $name, $email, $passHash);
+
+                header('Location: index.php?action=connect');
+            } else {
+                throw new Exception("Password doesn't match");
+            }
+        } else {
+            throw new Exception("Account already exists with this email");
+        }
     }
 
     public function userProfile($email) {

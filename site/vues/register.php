@@ -12,7 +12,7 @@
     </head>
 
     <body class="text-center">
-        <form id="formulaire-register" action="index.php?action=register" method="POST">
+    <form id="formulaire-login" action="index.php?action=register" method="POST">
             <a href="index.php">
                 <img class="mb-4" src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Dragon_Ball_%28manga%2C_perfect%29_Logo.svg" alt="" width="200" height="72">
             </a>
@@ -30,15 +30,33 @@
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-heading"></i></span>
+                </div>
+                <input class="form-control" type="text" name="username" id="username" placeholder="Gérard" aria-label="User Name">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-heading"></i></span>
+                </div>
+                <input class="form-control" type="text" name="usersurname" id="usersurname" placeholder="Depardieu" aria-label="User Surname">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-key"></i></span>
                 </div>
-                <input class="form-control" type="password" name="userpass" id="userpass" placeholder="****" aria-label="User Password">
+                <input class="form-control" type="password" name="userpass" id="userpass" placeholder="password" aria-label="User Password">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                </div>
+                <input class="form-control" type="password" name="userpassconf" id="userpassconf" placeholder="password confirmation" aria-label="User Password Confirmation">
             </div>
 
-            <button type="submit" class="btn-block btn-lg btn btn-warning">Login</button>
+            <button type="submit" class="btn-block btn-lg btn btn-warning">Register</button>
 
             <div class="mt-2">
-                <p><a href="#">Register</a></p>
+                <p><a href="index.php?action=connect">Login</a></p>
             </div>
 
 
