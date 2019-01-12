@@ -5,7 +5,8 @@ class UserModel {
     private $_userGateway;
 
     public function __construct() {
-        $con = new Connection('mysql:host=localhost;dbname=projetphp', 'root', '');
+        global $bdd;
+        $con = new Connection('mysql:host=localhost;dbname=projetphp', $bdd["username"], $bdd["password"]);
         $this->_userGateway = new UserGateway($con);
     }
 
