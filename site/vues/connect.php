@@ -14,7 +14,7 @@
     <body class="text-center">
         <form id="formulaire-login" action="index.php?action=connect" method="POST" novalidate>
         <img class="mb-4" src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Dragon_Ball_%28manga%2C_perfect%29_Logo.svg" alt="" width="200" height="72">
-            <h1 class="h3 mb-3 font-weight-normal">Connection</h1>
+            <h1 class="h3 mb-3 font-weight-normal">Login</h1>
             <?php if($error) { ?> 
             <div class="mb-3 pb-0 alert alert-danger" role="alert">
                 <p><?php echo $error ?></p> 
@@ -35,14 +35,14 @@
 
             <div class="checkbox mb-3">
                 <label>
-                    <input type="checkbox" value="remember-me"> Stay Connected
+                    <input type="checkbox" value="remember-me"> Stay Logged-in
                 </label>
             </div>
 
-            <button type="submit" class="btn-block btn-lg btn btn-warning">Connexion</button>
+            <button type="submit" class="btn-block btn-lg btn btn-warning">Login</button>
 
             <div class="mt-2">
-                <p><a href="/signup">Register</a> ou <a href="/reset">Forgot Password</a> ?</p>
+                <p><a href="/signup">Register</a> or <a href="/reset">Forgot Password</a> ?</p>
             </div>
 
 
