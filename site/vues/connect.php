@@ -8,13 +8,13 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Lato:700,700i" rel="stylesheet"> 
         <link rel="stylesheet" href="vues/style/style-form.css">
-        <title>QLF Connexion</title>
+        <title>QLF Connection</title>
     </head>
 
     <body class="text-center">
         <form id="formulaire-login" action="index.php?action=connect" method="POST" novalidate>
         <img class="mb-4" src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Dragon_Ball_%28manga%2C_perfect%29_Logo.svg" alt="" width="200" height="72">
-            <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+            <h1 class="h3 mb-3 font-weight-normal">Connection</h1>
             <?php if($error) { ?> 
             <div class="mb-3 pb-0 alert alert-danger" role="alert">
                 <p><?php echo $error ?></p> 
@@ -35,18 +35,18 @@
 
             <div class="checkbox mb-3">
                 <label>
-                    <input type="checkbox" value="remember-me"> Rester connecté
+                    <input type="checkbox" value="remember-me"> Stay Connected
                 </label>
             </div>
 
             <button type="submit" class="btn-block btn-lg btn btn-warning">Connexion</button>
 
             <div class="mt-2">
-                <p><a href="/signup">S'inscrire</a> ou <a href="/reset">Mot de passe oublié</a> ?</p>
+                <p><a href="/signup">Register</a> ou <a href="/reset">Forgot Password</a> ?</p>
             </div>
 
 
-            <p class="mt-5 mb-3 text-muted">&copy; 2018 Fifi & Roro - Tous droits réservés</p>
+            <p class="mt-5 mb-3 text-muted">&copy; 2018 Fifi & Roro - All rights reserved</p>
         </form>
 
     </body>
