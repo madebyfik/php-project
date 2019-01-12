@@ -60,13 +60,27 @@ abstract class Controller {
         global $vues, $rep, $data;
 
         $listTaskModel = new ListTaskModel();
+        $userModel = new UserModel();
 
         $listTask = $listTaskModel->listPublic();
+
+        if(isset($_SESSION["email"])) {
+            try {
+                $user = $userModel->userProfile($_SESSION['email']);
+                $listTaskPrivate = $listTaskModel->listPrivate($user->getId());
+
+                $data["listPrivate"] = $listTaskPrivate;
+            
+            } catch (Exception $e) {
+                header("Location: index.php");
+            }
+        }
 
         $data["liste"] = $listTask;
         $data["activeListe"] = true;
 
         $this->render($rep, $vues['list'], true, $data);
+
     }
 
     public function deleteList() {
@@ -97,7 +111,24 @@ abstract class Controller {
                 $data["tasks"] = $taskArray;
                 $data["listId"] = $listTask->getId();
             } else {
-                
+                if(isset($_SESSION["email"])) {
+                    try {
+                        $user = $userModel->userProfile($_SESSION['email']);
+            
+                        if($user->getId() === $listTask->getIdUtilisateur()) {
+                            $taskArray = $taskModel->getTask($listId);
+                            $data["listTask"] = $listTask;
+                            $data["tasks"] = $taskArray;
+                            $data["listId"] = $listTask->getId();
+                        } else {
+                            header("Location: index.php");
+                        }
+                    } catch (Exception $e) {
+                        header("Location: index.php");
+                    }
+                } else {
+                    header("Location: index.php");
+                }
             }
         } catch(Exception $e) {
             header("Location: index.php");
@@ -132,22 +163,28 @@ abstract class Controller {
                 } catch (Exception $e) {
                     $data['error'] = $e->getMessage();
                 }
-            }
-
-            /*if(isset($data['isLoggedIn'])) {
-                try {
-                    $user = $userModel->userProfile($_SESSION['email']);
-                    $listTaskModel->addList($listeName, $privatePublic, $user->getId());
-                } catch(Exception $e) {
-                    $data['error'] = $e->getMessage();
-                }
             } else {
-                try {
-                    $listTaskModel->addListPublic($listeName);
-                } catch(Exception $e) {
-                    $data['error'] = $e->getMessage();
+                if(isset($_SESSION["email"])) {
+                    try {
+                        $user = $userModel->userProfile($_SESSION['email']);
+            
+                        if($user->getId() === $listTask->getIdUtilisateur()) {
+                            try {
+                                $taskModel->addTask($taskName, $taskDescription, $listTask->getId());
+                                header("Location: index.php?action=tasks&listId=".$listTask->getId());
+                            } catch(Exception $e) {
+                                $data['error'] = $e->getMessage();
+                            }
+                        } else {
+                            header("Location: index.php");
+                        }
+                    } catch (Exception $e) {
+                        header("Location: index.php");
+                    }
+                } else {
+                    header("Location: index.php");
                 }
-            }*/
+            }
         }
 
         $this->render($rep, $vues['addTask'], false, $data);

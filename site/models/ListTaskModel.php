@@ -69,7 +69,7 @@ class ListTaskModel {
             Validation::valString($listId);
 
             $listTask = $this->_listTaskGateway->getListById($listId);
-
+            
             if($listTask === null) {
                 throw new Exception("Aucune liste");
             } else {

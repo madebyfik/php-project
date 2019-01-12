@@ -120,7 +120,7 @@ class ListTaskGateway {
 
         if(count($results) > 0) {
             $results = $results[0];
-            return new ListTask($results['id'], $results['nom'], $results['public'], $results['idUtilisateur']);
+            return new ListTask($results['id'], $results['nom'], $results['public'], $results['id_utilisateur']);
         }
 
         return null;
