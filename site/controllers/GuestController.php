@@ -23,6 +23,9 @@ class GuestController extends Controller{
                 case 'tasks':
                     $this->displayTasks();
                     break;
+                case 'addTask':
+                    $this->addTask();
+                    break;
                 default:
                     $this->navigation('error');
                     break;

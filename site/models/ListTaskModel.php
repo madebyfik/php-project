@@ -64,4 +64,20 @@ class ListTaskModel {
         return $listTask;
     }
 
+    public function isList($listId) {
+        if(isset($listId)) {
+            Validation::valString($listId);
+
+            $listTask = $this->_listTaskGateway->getListById($listId);
+            
+            if($listTask === null) {
+                throw new Exception("Aucune liste");
+            } else {
+                return $listTask;
+            } 
+        } else {
+            throw new Exception("Aucune liste");
+        }
+    }
+
 }

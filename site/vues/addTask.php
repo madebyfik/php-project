@@ -8,15 +8,15 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Lato:700,700i" rel="stylesheet"> 
         <link rel="stylesheet" href="vues/style/style-form.css">
-        <title>QLF Add a List</title>
+        <title>Add a task : <?php echo $listTask->getNom(); ?></title>
     </head>
 
     <body class="text-center">
-        <form id="formulaire-login" action="index.php?action=addList" method="POST">
+        <form id="formulaire-login" action="index.php?action=addTask&listId=<?php echo $listTask->getId(); ?>" method="POST">
             <a href="index.php">
                 <img class="mb-4" src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Dragon_Ball_%28manga%2C_perfect%29_Logo.svg" alt="" width="200" height="72">
             </a>
-            <h1 class="h3 mb-3 font-weight-normal">Add a list</h1>
+            <h1 class="h3 mb-3 font-weight-normal">Add a task to <?php echo $listTask->getNom(); ?></h1>
             <?php if($error) { ?> 
             <div class="mb-3 pb-0 alert alert-danger" role="alert">
                 <p><?php echo $error ?></p> 
@@ -26,16 +26,11 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-heading"></i></span>
                 </div>
-                <input class="form-control" type="text" name="listeName" id="listeName" placeholder="nom de ma liste" aria-label="Liste Name">
+                <input class="form-control" type="text" name="taskName" id="taskName" placeholder="task name" aria-label="Liste Name">
             </div>
+
             <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-user-secret"></i></span>
-                </div>
-                <select class="custom-select" id="privatePublic" name="privatePublic">
-                    <option <?php echo $isLoggedIn ? "selected" : ""; ?> value="1">public</option>
-                    <?php if($isLoggedIn) { ?> <option selected value="0">private</option> <?php } ?>
-                </select>
+                <textarea id="taskDescription" name="taskDescription" placeholder="description..." class="form-control" aria-label="With textarea"></textarea>
             </div>
 
             <button type="submit" class="btn-block btn-lg btn btn-warning">Add</button>

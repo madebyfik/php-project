@@ -5,29 +5,35 @@ class Task {
     private $_id;
     private $_nom;
     private $_description;
+    private $_completed;
     private $_idList;
 
-    function __construct($id, $nom, $description, $idList) {
+    public function __construct($id, $nom, $description, $completed, $idList) {
         $this->_id = $id;
         $this->_nom = $nom;
         $this->_description = $description;
-        $this->_idUtilisateur = $idUtilisateur;
+        $this->_completed = $completed;
+        $this->_idList = $idList;
     }
 
     public function getId() {
-        return $_id;
+        return $this->_id;
     }
 
     public function getNom() {
-        return $_nom;
+        return $this->_nom;
     }
 
     public function getDescription() {
-        return $_description;
+        return $this->_description;
+    }
+
+    public function getCompleted() {
+        return $this->_completed;
     }
 
     public function getIdList() {
-        return $_idList;
+        return $this->_idList;
     }
 
     public function setId($id) {
@@ -42,8 +48,12 @@ class Task {
         $this->_description = $description;
     }
 
+    public function setCompleted($completed) {
+        $this->_completed = $completed;
+    }
+
     public function setIdList($idList) {
-        $this->_idList = $idList
+        $this->_idList = $idList;
     }
 
 }
