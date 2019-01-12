@@ -80,4 +80,47 @@ class Validation {
         filter_var($string, FILTER_SANITIZE_STRING);
     }
 
+    static function valFormRegister(&$email, &$name, &$surname, &$password, &$passwordConfirmation, &$errorArray){
+        if(isset($email) && !empty($email)) {
+            if($email != filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $errorArray[] = "Mail is incorrect";
+                $email = "";
+            }   
+        } else {
+            $errorArray[] = "Please enter your email adress";
+            $email = "";
+        }
+
+        if(isset($surname) && !empty($surname)) {
+            if($surname != filter_var($surname, FILTER_SANITIZE_STRING)) {
+                $errorArray[] = "Surname is incorrect";
+                $surname = "";
+            }
+        } else {
+            $errorArray[] = "Please enter your surname";
+            $surname = "";
+        }
+
+        if(isset($name) && !empty($name)) {
+            if($name != filter_var($name, FILTER_SANITIZE_STRING)) {
+                $errorArray[] = "Name is incorrect";
+                $name = "";
+            }
+        } else {
+            $errorArray[] = "Please enter your first name";
+            $name = "";
+        }
+
+        if(isset($password) && !empty($password)) {
+            if($password != filter_var($password, FILTER_SANITIZE_STRING)) {
+                $errorArray[] = "Password is incorrect";
+                $password = "";
+            }
+        } else {
+            $errorArray[] = "Please enter a password";
+            $password = "";
+        }
+
+    }
+
 }
