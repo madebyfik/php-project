@@ -26,6 +26,9 @@ class GuestController extends Controller{
                 case 'addTask':
                     $this->addTask();
                     break;
+                case 'register':
+                    $this->register();
+                    break;
                 default:
                     $this->navigation('error');
                     break;
@@ -55,6 +58,27 @@ class GuestController extends Controller{
         }   
 
         $this->render($rep, $vues['connect'], false, $data);
+    }
+
+    public function register(){
+        global $vues, $rep;
+
+        $data =[];
+        $userModel = new UserModel();
+        
+        if(isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['mail']) && isset($_POST['password'])){
+            extract($_POST);
+
+            try{
+                $userModel->register($nom,$prenom,$mail,$password);
+            } catch(Exception $e){
+                $data = array(
+                    "error" => $e->getMessage()
+                );
+            }
+        }
+        $this->render($rep, $vues['register'], false, $data);
+
     }
 
 }

@@ -32,6 +32,18 @@ class UserModel {
         }
     }
 
+    public function register($nom,$prenom,$mail,$password){
+        $errorArray = [];
+
+        Validation::valFormRegister($name,$prenom,$mail,$password,$errorArray);
+        if (count($errorArray)>0){
+            throw new Exception($errorArray[0]);
+        }
+
+        $this->_UserGateway->insert($nom,$prenom,$mail,$password);
+        header('Location: index.php');
+    }
+
     public function userProfile($email) {
         $errorArray = [];
 
