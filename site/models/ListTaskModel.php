@@ -23,6 +23,9 @@ class ListTaskModel {
 
     public function addList($name, $public, $userId) {
         $errorArray = [];
+
+        $public = $public === '0' ? false : true;
+
         Validation::valFormListTask($name, $errorArray);
 
         if(count($errorArray) > 0) {
