@@ -1,0 +1,33 @@
+html, body {
+    height: 100%;
+}
+
+body
+{
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/*
+
+FORMULAIRE PAGE
+
+*/
+
+#formulaire-login 
+{
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    color: black;
+    margin: 0 auto;
+}
+
+.btn 
+{
+    border-radius: 0;
+}
