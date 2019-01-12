@@ -37,14 +37,14 @@
 
                 <?php if(!$isLoggedIn) { ?>
                     <div class="collapse navbar-collapse navbar-header justify-content-end" id="navbar-secondaire">
-                        <a href="index.php?action=connect" class="nav-btn btn btn-light my-2 my-sm-0 ml-1 mr-2" role="btn">Connection</a>
+                        <a href="index.php?action=connect" class="nav-btn btn btn-light my-2 my-sm-0 ml-1 mr-2" role="btn">Login</a>
                         <a href="#" class="nav-btn btn btn-warning my-2 my-sm-0 ml-1 mr-2" role="btn">Register</a>
                     </div>
                 <?php } else { ?>
                     <div class="collapse navbar-collapse navbar-header justify-content-end" id="navbar-secondaire">
                     <a href="index.php?action=profilePage" class="nav-btn btn btn-light my-2 my-sm-0 ml-1 mr-2" role="btn">My Profile</a>
                         <form action="index.php?action=disconnect" method="post">
-                            <button class="nav-btn btn btn-warning my-2 my-sm-0 ml-1 mr-2">Disconnect</button>
+                            <button class="nav-btn btn btn-warning my-2 my-sm-0 ml-1 mr-2">Log out</button>
                         </form>
                     </div>
                 <?php } ?>
