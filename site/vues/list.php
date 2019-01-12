@@ -15,7 +15,7 @@
             <?php } ?>
             </div>
         <?php } else { ?>
-            <h1 class="display-4 text-center mb-5">currently no public list</h1>
+            <h1 class="display-6 text-center mb-5">currently no public list</h1>
         <?php } ?>
     </div>
 
@@ -36,7 +36,7 @@
                 <?php } ?>
                 </div>
             <?php } else { ?>
-                <h1 class="display-4 text-center mb-5">currently no public list</h1>
+                <h1 class="display-6 text-center mb-5">currently no private list</h1>
             <?php } ?>
         </div>
     <?php } ?>
