@@ -1,3 +1,3 @@
 <main class="text-center m-auto">
-    <h1>C'est la hess 404 error</h1>
+    <h1>404 NOT FOUND</h1>
 </main>
