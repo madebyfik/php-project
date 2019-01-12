@@ -27,6 +27,9 @@ class UserController extends Controller {
                 case 'disconnect':
                     $this->disconnect();
                     break;
+                case 'tasks':
+                    $this->displayTasks();
+                    break;
                 default:
                     $this->navigation('error');
                     break;

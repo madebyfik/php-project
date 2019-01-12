@@ -40,8 +40,6 @@ abstract class Controller {
             if(isset($data['isLoggedIn'])) {
                 try {
                     $user = $userModel->userProfile($_SESSION['email']);
-                    $privatePublic = $privatePublic === '0' ? false : true;
-                    
                     $listTaskModel->addList($listeName, $privatePublic, $user->getId());
                 } catch(Exception $e) {
                     $data['error'] = $e->getMessage();
@@ -79,6 +77,12 @@ abstract class Controller {
         $listTaskModel->deleteList($_POST['idListe']);
 
         header("Location: index.php");
+    }
+
+    public function displayTasks() {
+        global $vues, $rep, $data;
+
+        $this->render($rep, $vues['tasks'], true, $data);
     }
 
 }

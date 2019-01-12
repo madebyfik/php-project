@@ -20,6 +20,9 @@ class GuestController extends Controller{
                 case 'deleteList':
                     $this->deleteList();
                     break;
+                case 'tasks':
+                    $this->displayTasks();
+                    break;
                 default:
                     $this->navigation('error');
                     break;

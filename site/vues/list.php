@@ -5,8 +5,9 @@
             <div class="row text-center"> 
             <?php foreach($liste as $lEl) { ?>
                 <div class="col-md-4 listediv">
-                    <h1 class="titre-liste"><?php echo $lEl->getNom() ; ?></h1>
-                    <form action="index.php?action=deleteList" method="post">
+                    <h1 class="titre-liste"><?php echo substr($lEl->getNom(), 0, 25) ; ?></h1>
+                    <a class="nav-btn btn btn-warning my-2 my-sm-0 ml-1 mr-2" role="btn" href="index.php?action=tasks&list=<?php echo $lEl->getId(); ?>">Display tasks</a>
+                    <form class="mt-1" action="index.php?action=deleteList" method="post">
                         <input type="hidden" value="<?php echo $lEl->getId(); ?>" id="idListe" name="idListe">
                         <button class="nav-btn btn btn-warning my-2 my-sm-0 ml-1 mr-2">Remove</button>
                     </form>
