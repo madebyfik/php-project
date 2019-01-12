@@ -128,6 +128,7 @@ abstract class Controller {
             if($listTask->getPublic() === '1') {
                 try {
                     $taskModel->addTask($taskName, $taskDescription, $listTask->getId());
+                    header("Location: index.php?action=tasks&listId=".$listTask->getId());
                 } catch (Exception $e) {
                     $data['error'] = $e->getMessage();
                 }

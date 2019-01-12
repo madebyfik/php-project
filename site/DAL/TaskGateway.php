@@ -9,7 +9,7 @@ class TaskGateway {
     }
 
     public function insert($nom, $description, $id_list) {
-        $query = 'INSERT INTO tache (nom, description, id_list) VALUES (:nom, :description, :id_list)';
+        $query = 'INSERT INTO tache (nom, description, completed, id_list) VALUES (:nom, :description, 0, :id_list)';
 
         $this->_con->executeQuery($query, array(
             ':nom' => array($nom, PDO::PARAM_STR),
