@@ -12,8 +12,10 @@
     </head>
 
     <body class="text-center">
-        <form id="formulaire-login" action="index.php?action=connect" method="POST" novalidate>
-        <img class="mb-4" src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Dragon_Ball_%28manga%2C_perfect%29_Logo.svg" alt="" width="200" height="72">
+        <form id="formulaire-login" action="index.php?action=connect" method="POST">
+            <a href="index.php">
+                <img class="mb-4" src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Dragon_Ball_%28manga%2C_perfect%29_Logo.svg" alt="" width="200" height="72">
+            </a>
             <h1 class="h3 mb-3 font-weight-normal">Login</h1>
             <?php if($error) { ?> 
             <div class="mb-3 pb-0 alert alert-danger" role="alert">
@@ -33,16 +35,10 @@
                 <input class="form-control" type="password" name="userpass" id="userpass" placeholder="****" aria-label="User Password">
             </div>
 
-            <div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" value="remember-me"> Stay Logged-in
-                </label>
-            </div>
-
             <button type="submit" class="btn-block btn-lg btn btn-warning">Login</button>
 
             <div class="mt-2">
-                <p><a href="/signup">Register</a> or <a href="/reset">Forgot Password</a> ?</p>
+                <p><a href="#">Register</a></p>
             </div>
 
 

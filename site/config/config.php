@@ -11,3 +11,4 @@ $vues['contact'] = 'vues/contact.php';
 $vues['connect'] = 'vues/connect.php';
 $vues['profile'] = 'vues/profile.php';
 $vues['addList'] = 'vues/addList.php';
+$vues['tasks'] = 'vues/tasks.php';

@@ -79,4 +79,10 @@ abstract class Controller {
         header("Location: index.php");
     }
 
+    public function displayTasks() {
+        global $vues, $rep, $data;
+
+        $this->render($rep, $vues['tasks'], true, $data);
+    }
+
 }

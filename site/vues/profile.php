@@ -9,7 +9,8 @@
             <?php foreach($liste as $lEl) { ?>
                 <div class="col-md-4 listediv">
                     <h1 class="titre-liste"><?php echo $lEl->getNom() ; ?></h1>
-                    <form action="index.php?action=supprimerListePrivate" method="post">
+                    <a class="nav-btn btn btn-warning my-2 my-sm-0 ml-1 mr-2" role="btn" href="index.php?action=tasks&list=<?php echo $lEl->getId(); ?>">Display tasks</a>
+                    <form class="mt-1" action="index.php?action=deleteListPrivate" method="post">
                         <input type="hidden" value="<?php echo $lEl->getId(); ?>" id="idListe" name="idListe">
                         <button class="nav-btn btn btn-warning my-2 my-sm-0 ml-1 mr-2">Delete</button>
                     </form>
