@@ -29,6 +29,9 @@ class GuestController extends Controller{
                 case 'register':
                     $this->register();
                     break;
+                case 'completeTask':
+                    $this->completeTask();
+                    break;
                 default:
                     $this->navigation('error');
                     break;

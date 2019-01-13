@@ -159,3 +159,11 @@ NEWS
 {
     margin-bottom: 30px;
 }
+
+
+.card-task 
+{
+    margin: auto;
+    margin-bottom: 5%;
+    width: 75%;
+}

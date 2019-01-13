@@ -35,8 +35,6 @@ class ListTaskModel {
         }
 
         $this->_listTaskGateway->insert($name, $public, $userId);
-
-        header('Location: index.php');
     }
 
     public function deleteList($id) {

@@ -28,8 +28,20 @@ class TaskModel {
         }
 
         $this->_taskGateway->insert($taskName, $taskDescription, $listId);
+    }
 
-        header('Location: index.php');
+    public function updateCompleted($idTask, $completeTask) {
+        $errorArray = [];
+
+        Validation::valFormCompleteTask($idTask, $completeTask, $errorArray);
+
+        if(count($errorArray) > 0) {
+            throw new Exception($errorArray[0]);
+        }
+        
+        $completeTask = $completeTask === '0' ? '1' : '0';
+
+        $this->_taskGateway->updateCompleted($idTask, $completeTask);
     }
 
 }

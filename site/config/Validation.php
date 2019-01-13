@@ -123,4 +123,26 @@ class Validation {
 
     }
 
+    static function valFormCompleteTask($idTask, $completeTask, $errorArray) {
+        if(isset($idTask) && !empty($idTask)) {
+            if($idTask != filter_var($idTask, FILTER_SANITIZE_NUMBER_INT)) {
+                $errorArray[] = "id task is incorrect";
+                $idTask = "";
+            }
+        } else {
+            $errorArray[] = "id task is incorrect";
+            $name = "";
+        }
+
+        if(isset($completeTask) && !empty($completeTask)) {
+            if($completeTask != filter_var($completeTask, FILTER_SANITIZE_STRING)) {
+                $errorArray[] = "complete task value is incorrect";
+                $completeTask = "";
+            }
+        } else {
+            $errorArray[] = "complete task value is incorrect";
+            $completeTask = "";
+        }
+    }
+
 }

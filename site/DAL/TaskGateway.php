@@ -18,7 +18,6 @@ class TaskGateway {
         ));
     }
 
-
     public function update($id, $nom, $description, $id_list) {
         $query = 'UPDATE tache SET nom=:nom, description=:description, id_list=:idlist WHERE id=:id';
 
@@ -29,6 +28,15 @@ class TaskGateway {
             ':id' => array($id, PDO::PARAM_INT)
         ));
 
+    }
+
+    public function updateCompleted($id, $completed) {
+        $query = 'UPDATE tache SET completed=:completed WHERE id=:id';
+
+        $this->_con->executeQuery($query, array(
+            ':completed' => array($completed, PDO::PARAM_BOOL),
+            ':id' => array($id, PDO::PARAM_INT)
+        ));
     }
 
     public function delete($id) {
