@@ -5,10 +5,10 @@
                     <p>To Do List GANG</p>
                 </div>
                 <div id="link-footer" class="mb-2">
-                    <a class="footer-links hvr-icon-grow ml-2" href="https://www.twitch.tv/fikretkurklu" target="_blank"><i class="hvr-icon fab fa-twitch"></i></a>
-                    <a class="footer-links hvr-icon-grow ml-2" href="https://twitter.com/fikretkurklu" target="_blank"><i class="hvr-icon fab fa-twitter"></i></a>
-                    <a class="footer-links hvr-icon-grow ml-2" href="https://www.instagram.com/fikretkurklu/" target="_blank"><i class="hvr-icon fab fa-instagram"></i></a>
-                    <a class="footer-links hvr-icon-grow ml-2" href="https://www.youtube.com/channel/UCqNufmVf1OBtmIFo3_pSSpw" target="_blank"><i class="hvr-icon fab fa-youtube"></i></a>
+                    <a class="footer-links hvr-icon-grow ml-2" href="https://www.twitch.tv" target="_blank"><i class="hvr-icon fab fa-twitch"></i></a>
+                    <a class="footer-links hvr-icon-grow ml-2" href="https://twitter.com" target="_blank"><i class="hvr-icon fab fa-twitter"></i></a>
+                    <a class="footer-links hvr-icon-grow ml-2" href="https://www.instagram.com" target="_blank"><i class="hvr-icon fab fa-instagram"></i></a>
+                    <a class="footer-links hvr-icon-grow ml-2" href="https://www.youtube.com" target="_blank"><i class="hvr-icon fab fa-youtube"></i></a>
                 </div>
                 <div id="copyright-footer">
                     <p>© 2018 Fifi & Roro - All rights reserved</p>
