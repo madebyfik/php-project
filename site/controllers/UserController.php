@@ -30,6 +30,9 @@ class UserController extends Controller {
                 case 'addTask':
                     $this->addTask();
                     break;
+                case 'completeTask':
+                    $this->completeTask();
+                    break;
                 default:
                     $this->navigation('error');
                     break;

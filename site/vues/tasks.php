@@ -1,13 +1,30 @@
 <main>
     <div>
-    <h1 class="text-center display-5 mt-5 mb-5">List : <?php echo $listTask->getNom(); ?></h1>
+        <h1 class="text-center display-5 mt-5 mb-5">List : <?php echo $listTask->getNom(); ?></h1>
 
         <?php if(count($tasks) > 0) { ?>
-            <div class="row text-center"> 
+            <div class="text-center"> 
             <?php foreach($tasks as $task) { ?>
-                <div class="col-md-4 listediv">
-                    <h1 class="titre-liste"><?php echo $task->getNom(); ?></h1>
-                </div>     
+                <div class="card-task card card text-center">
+                
+                    <div class="card-header">
+                        <h3 style="text-decoration: <?php echo $task->getCompleted() === '1' ? 'line-through' : 'none';?>;"><?php echo $task->getNom(); ?></h3>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="card-text"><?php echo $task->getDescription(); ?></p>
+                    </div>
+
+                    <div class="card-footer">
+                        <form action="index.php?action=completeTask" method="post">
+                            <input id="listId" name="listId" value="<?php echo $_GET["listId"]; ?>" type="hidden">
+                            <input id="idTask" name="idTask" value="<?php echo $task->getId(); ?>" type="hidden">
+                            <input id="completeTask" name="completeTask" value="<?php echo $task->getCompleted(); ?>" type="hidden">
+                            <button class="btn-style btn btn-warning my-2 my-sm-0 ml-1 mr-2"><?php echo $task->getCompleted() === '1' ? 'Uncomplete' : 'Complete';?></button>
+                        </form>
+                    </div>
+
+                </div>    
             <?php } ?>
             </div>
         <?php } else { ?>

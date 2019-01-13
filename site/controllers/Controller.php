@@ -41,19 +41,22 @@ abstract class Controller {
                 try {
                     $user = $userModel->userProfile($_SESSION['email']);
                     $listTaskModel->addList($listeName, $privatePublic, $user->getId());
+                    header("Location: index.php");
                 } catch(Exception $e) {
-                    $data['error'] = $e->getMessage();
+                    $this->render($rep, $vues['addList'], false, $data);
                 }
             } else {
                 try {
                     $listTaskModel->addListPublic($listeName);
                 } catch(Exception $e) {
                     $data['error'] = $e->getMessage();
+                    $this->render($rep, $vues['addList'], false, $data);
                 }
             }
+        } else {
+            $this->render($rep, $vues['addList'], false, $data);
         }
-
-        $this->render($rep, $vues['addList'], false, $data);
+        
     }
  
     public function list() {
@@ -146,14 +149,16 @@ abstract class Controller {
         $userModel = new UserModel();
         $listTaskModel = new ListTaskModel();
         $taskModel = new TaskModel();
-        
-        try {
-            $listTask = $listTaskModel->isList($listId);
-            $data["listTask"] = $listTask;
-        } catch(Exception $e) {
-            header("Location: index.php");
-        }
 
+        if(isset($listId)) {
+            try {
+                $listTask = $listTaskModel->isList($listId);
+                $data["listTask"] = $listTask;
+            } catch(Exception $e) {
+                header("Location: index.php");
+            }
+        }
+        
         if(isset($taskName) && isset($taskDescription)) {
             
             if($listTask->getPublic() === '1') {
@@ -174,6 +179,7 @@ abstract class Controller {
                                 header("Location: index.php?action=tasks&listId=".$listTask->getId());
                             } catch(Exception $e) {
                                 $data['error'] = $e->getMessage();
+                                $this->render($rep, $vues['addTask'], false, $data);
                             }
                         } else {
                             header("Location: index.php");
@@ -185,9 +191,61 @@ abstract class Controller {
                     header("Location: index.php");
                 }
             }
+        } else {
+            $this->render($rep, $vues['addTask'], false, $data);
         }
+    }
 
-        $this->render($rep, $vues['addTask'], false, $data);
+    public function completeTask() {
+        global $vues, $rep, $data;
+
+        extract($_POST);
+        
+        $userModel = new UserModel();
+        $listTaskModel = new ListTaskModel();
+        $taskModel = new TaskModel();
+        
+        if(isset($listId) && isset($idTask) && isset($completeTask)) {
+
+            try {
+                $listTask = $listTaskModel->isList($listId);
+            } catch(Exception $e) {
+                header("Location: index.php");
+            }
+            
+            if($listTask->getPublic() === '1') {
+                try {
+                    $taskModel->updateCompleted($idTask, $completeTask);
+                    header("Location: index.php?action=tasks&listId=" . $listId);
+                } catch (Exception $e) {
+                    $data['error'] = $e->getMessage();
+                }
+            } else {
+                if(isset($_SESSION["email"])) {
+                    try {
+                        $user = $userModel->userProfile($_SESSION['email']);
+            
+                        if($user->getId() === $listTask->getIdUtilisateur()) {
+                            try {
+                                $taskModel->updateCompleted($idTask, $completeTask);
+                                header("Location: index.php?action=tasks&listId=" . $listId);
+                            } catch(Exception $e) {
+                                $data['error'] = $e->getMessage();
+                            }
+                        } else {
+                            header("Location: index.php");
+                        }
+                    } catch (Exception $e) {
+                        header("Location: index.php");
+                    }
+                } else {
+                    header("Location: index.php");
+                }
+            }
+        
+        } else {
+            header("Location: index.php");
+        } 
     }
 
 }

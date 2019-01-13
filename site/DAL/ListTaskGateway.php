@@ -83,7 +83,7 @@ class ListTaskGateway {
     }
 
     public function getPrivate($id) {
-        $query = 'SELECT * FROM list_tache WHERE id_utilisateur = :id_utilisateur';
+        $query = 'SELECT * FROM list_tache WHERE id_utilisateur = :id_utilisateur AND public = 0';
 
         $this->_con->executeQuery($query, array(
             ':id_utilisateur' => array($id, PDO::PARAM_INT)
