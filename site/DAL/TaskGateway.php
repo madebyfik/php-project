@@ -18,31 +18,11 @@ class TaskGateway {
         ));
     }
 
-    public function update($id, $nom, $description, $id_list) {
-        $query = 'UPDATE tache SET nom=:nom, description=:description, id_list=:idlist WHERE id=:id';
-
-        $this->_con->executeQuery($query, array(
-            ':nom' => array($nom, PDO::PARAM_STR),
-            ':description' => array($description, PDO::PARAM_STR),
-            ':id_list' => array($id_list, PDO::PARAM_INT),
-            ':id' => array($id, PDO::PARAM_INT)
-        ));
-
-    }
-
     public function updateCompleted($id, $completed) {
         $query = 'UPDATE tache SET completed=:completed WHERE id=:id';
 
         $this->_con->executeQuery($query, array(
             ':completed' => array($completed, PDO::PARAM_BOOL),
-            ':id' => array($id, PDO::PARAM_INT)
-        ));
-    }
-
-    public function delete($id) {
-        $query = 'DELETE FROM tache WHERE id=:id';
-
-        $this->_con->executeQuery($query, array(
             ':id' => array($id, PDO::PARAM_INT)
         ));
     }
