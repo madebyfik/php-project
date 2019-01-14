@@ -1,14 +1,28 @@
     <?php
 
-class ListTaskGateway {
+    /**
+     * Class ListTaskGateway
+     */
+    class ListTaskGateway {
 
-    private $_con;
+        /**
+         * @var
+         */
+        private $_con;
 
-    function __construct($con) {
+        /**
+         * ListTaskGateway constructor.
+         * @param $con
+         */
+        function __construct($con) {
         $this->_con = $con;
     }
 
-    public function insertPublic($nom) {
+        /**
+         * Permet d'inserer une liste publique dans la table liste
+         * @param $nom Represente le nom de la liste
+         */
+        public function insertPublic($nom) {
         $query = 'INSERT INTO list_tache (nom, public) VALUES (:nom, 1)';
 
         $this->_con->executeQuery($query, array(
@@ -16,7 +30,13 @@ class ListTaskGateway {
         ));
     }
 
-    public function insert($nom, $public, $id_utilisateur) {
+        /**
+         * Permet d'inserer une nouvelle liste dans la table list_tache
+         * @param $nom Represente le nom de la liste
+         * @param $public Represente la visibilité de la liste
+         * @param $id_utilisateur Represente l'identifiant de l'utilisateur
+         */
+        public function insert($nom, $public, $id_utilisateur) {
         $query = 'INSERT INTO list_tache (nom, public, id_utilisateur) VALUES (:nom, :public, :id_utilisateur)';
         
         $this->_con->executeQuery($query, array(
@@ -26,8 +46,15 @@ class ListTaskGateway {
         ));
     }
 
-    public function update($id, $nom, $public, $idUtilisateur) {
-        $query = 'UPDATE listetache SET nom=:nom, public=:public, idUtilisateur=:idUtilisateur WHERE id=:id';
+        /**
+         * Permet de mettre a jour une liste de tache dans la table list_tache
+         * @param $id Represente l'identifiant de la liste
+         * @param $nom Represente le nom de la liste
+         * @param $public Represente la visibilié de la liste
+         * @param $idUtilisateur Represente l'identifiant de l'utilisateur
+         */
+        public function update($id, $nom, $public, $idUtilisateur) {
+        $query = 'UPDATE list_tache SET nom=:nom, public=:public, idUtilisateur=:idUtilisateur WHERE id=:id';
 
         $this->_con->executeQuery($query,array(
             ':nom' => array($nom, PDO::PARAM_STR),
@@ -38,7 +65,11 @@ class ListTaskGateway {
     }
 
 
-    public function delete($id) {
+        /**
+         * Permet de supprimer une liste publique de la table list_tache
+         * @param $id Represente l'identifiant de la liste
+         */
+        public function delete($id) {
         $query = 'DELETE FROM list_tache WHERE id=:id';
 
         $this->_con->executeQuery($query, array(
@@ -46,7 +77,12 @@ class ListTaskGateway {
         ));
     }
 
-    public function deletePrivate($userId, $id) {
+        /**
+         * Permet de supprimer une liste privée de la table list_tache
+         * @param $userId Represente l'identifiant de l'utilisateur
+         * @param $id Represente l'identifiant de la liste
+         */
+        public function deletePrivate($userId, $id) {
         $query = 'DELETE FROM list_tache WHERE id=:id AND id_utilisateur=:idUser';
 
         $this->_con->executeQuery($query, array(
@@ -55,7 +91,11 @@ class ListTaskGateway {
         ));
     }
 
-    public function getAllPublic() {
+        /**
+         * Permet de selectionner toutes les listes publiques de la table list_tache
+         * @return array|null retourne une liste de listes publiques
+         */
+        public function getAllPublic() {
         $query = 'SELECT * FROM list_tache WHERE public = :public';
 
         $this->_con->executeQuery($query, array(
@@ -82,7 +122,12 @@ class ListTaskGateway {
         return null;
     }
 
-    public function getPrivate($id) {
+        /**
+         * Permet de selectionner toute les listes privées de la table list_tache
+         * @param $id Represente l'identifiant de l'utilisateur
+         * @return array|null
+         */
+        public function getPrivate($id) {
         $query = 'SELECT * FROM list_tache WHERE id_utilisateur = :id_utilisateur AND public = 0';
 
         $this->_con->executeQuery($query, array(
@@ -109,7 +154,12 @@ class ListTaskGateway {
         return null;
     }
 
-    public function getListById($id) {
+        /**
+         * Permet de selectionner une liste par son identifiant
+         * @param $id Represente l'identifiant de la liste
+         * @return ListTask|null
+         */
+        public function getListById($id) {
         $query = 'SELECT * FROM list_tache WHERE id = :id';
 
         $this->_con->executeQuery($query, array(
@@ -126,7 +176,12 @@ class ListTaskGateway {
         return null;
     }
 
-    public function findByName($name) {
+        /**
+         * Permet de selectionner une liste par son nom
+         * @param $name Represente le nom de la liste
+         * @return ListTask|null
+         */
+        public function findByName($name) {
         $query = 'SELECT * FROM list_tache WHERE nom = :nom LIMIT 1';
         
         $this->_con->executeQuery($query, array(

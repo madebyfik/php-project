@@ -29,10 +29,10 @@ class User {
     /**
      * User constructor, permet l'initialisation d'un User avec des données de bases
      * @param $id Représente la valeur de base de l'id de l'utilisateur
-     * @param $nom
-     * @param $prenom
-     * @param $mail
-     * @param $password
+     * @param $nom Représente le nom de l'utilisateur
+     * @param $prenom Représente le prenom de l'utilisateur
+     * @param $mail Représente l'adresse email de l'utilisateur
+     * @param $password Représente le mot de passe de l'utilisateur
      */
     function __construct($id, $nom, $prenom, $mail, $password) {
         $this->_id = $id;
@@ -50,63 +50,63 @@ class User {
     }
 
     /**
-     * @return mixed Retourne
+     * @return mixed Retourne le nom de l'utilisateur
      */
     public function getNom() {
         return $this->_nom;
     }
 
     /**
-     * @return mixed
+     * @return mixed Retourne le prenom de l'utilisateur
      */
     public function getPrenom() {
         return $this->_prenom;
     }
 
     /**
-     * @return mixed
+     * @return mixed Retourne l'adresse mail de l'utilisateur
      */
     public function getMail() {
         return $this->_mail;
     }
 
     /**
-     * @return mixed
+     * @return mixed Retourne le mot de passe de l'utilisateur
      */
     public function getPassword() {
         return $this->_password;
     }
 
     /**
-     * @param $id
+     * @param $id Définit la valeur de base de l'id de l'utilisateur
      */
     public function setId($id) {
         $this->_id = $id;
     }
 
     /**
-     * @param $nom
+     * @param $nom Définit le nom de l'utilisateur
      */
     public function setNom($nom) {
         $this->_nom = $nom;
     }
 
     /**
-     * @param $prenom
+     * @param $prenom Définit le prenom de l'utilisateur
      */
     public function setPrenom($prenom) {
         $this->_prenom = $prenom;
     }
 
     /**
-     * @param $mail
+     * @param $mail Définit l'adresse email de l'utilisateur
      */
     public function setMail($mail) {
         $this->_mail = $mail;
     }
 
     /**
-     * @param $password
+     * @param $password Définit le mot de passe de l'utilisateu
      */
     public function setPassword($password) {
         $this->_password = $password;

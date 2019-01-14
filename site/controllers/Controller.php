@@ -2,8 +2,18 @@
 
 ini_set('display_errors', 0);
 
+/**
+ * Class Controller
+ */
 abstract class Controller {
 
+    /**
+     * Permet la mise en forme de la page demandée
+     * @param $rep Represente le chemin du dossier actuel
+     * @param $page Represente le nom de la page appelée
+     * @param bool $layoutRequire Permet de savoir si l'on ajoute les elements de layout
+     * @param array $data Represente les données traitées a afficher dans la page
+     */
     public function render($rep, $page, $layoutRequire=true, $data=[]) {
         global $layout;
 
@@ -21,12 +31,19 @@ abstract class Controller {
             
     }
 
+    /**
+     * Permet d'afficher la page demandée
+     * @param $page Represente le nom de la page a afficher
+     */
     public function navigation($page) {
         global $vues, $rep, $data;
 
         $this->render($rep, $vues[$page], true, $data);
     }
 
+    /**
+     *Permet d'afficher la page d'ajout de liste
+     */
     public function addList() {
         global $vues, $rep, $data;
 
@@ -58,8 +75,11 @@ abstract class Controller {
         }
         
     }
- 
-    public function list() {
+
+    /**
+     *Permet d'afficher la page d'accueil
+     */
+    public function homePage() {
         global $vues, $rep, $data;
 
         $listTaskModel = new ListTaskModel();
@@ -84,6 +104,9 @@ abstract class Controller {
 
     }
 
+    /**
+     *Permet de supprimer une liste
+     */
     public function deleteList() {
         global $vues, $rep, $data;
 
@@ -94,6 +117,9 @@ abstract class Controller {
         header("Location: index.php");
     }
 
+    /**
+     *Permet d'afficher les taches
+     */
     public function displayTasks() {
         global $vues, $rep, $data;
 
@@ -138,6 +164,9 @@ abstract class Controller {
         $this->render($rep, $vues['tasks'], true, $data);
     }
 
+    /**
+     *Permet d'ajouter une tache à une liste
+     */
     public function addTask() {
         global $vues, $rep, $data;
 
@@ -193,6 +222,9 @@ abstract class Controller {
         $this->render($rep, $vues['addTask'], false, $data);
     }
 
+    /**
+     *Permet de marquer une tache comme complétée
+     */
     public function completeTask() {
         global $vues, $rep, $data;
 
