@@ -189,9 +189,8 @@ abstract class Controller {
                     header("Location: index.php");
                 }
             }
-        } else {
-            $this->render($rep, $vues['addTask'], false, $data);
         }
+        $this->render($rep, $vues['addTask'], false, $data);
     }
 
     public function completeTask() {
