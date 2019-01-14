@@ -82,6 +82,7 @@ class GuestController extends Controller{
                 );
             }
         }
+        
         $this->render($rep, $vues['register'], false, $data);
 
     }

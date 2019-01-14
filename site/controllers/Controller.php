@@ -73,14 +73,12 @@ abstract class Controller {
                 $listTaskPrivate = $listTaskModel->listPrivate($user->getId());
 
                 $data["listPrivate"] = $listTaskPrivate;
-            
             } catch (Exception $e) {
                 header("Location: index.php");
             }
         }
 
         $data["liste"] = $listTask;
-        $data["activeListe"] = true;
 
         $this->render($rep, $vues['list'], true, $data);
 
@@ -228,10 +226,8 @@ abstract class Controller {
                         if($user->getId() === $listTask->getIdUtilisateur()) {
                             try {
                                 $taskModel->updateCompleted($idTask, $completeTask);
-                                header("Location: index.php?action=tasks&listId=" . $listId);
-                            } catch(Exception $e) {
-                                $data['error'] = $e->getMessage();
-                            }
+                            } catch(Exception $e) {}
+                            header("Location: index.php?action=tasks&listId=" . $listId);
                         } else {
                             header("Location: index.php");
                         }
@@ -242,7 +238,6 @@ abstract class Controller {
                     header("Location: index.php");
                 }
             }
-        
         } else {
             header("Location: index.php");
         } 

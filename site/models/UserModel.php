@@ -50,7 +50,7 @@ class UserModel {
                 ];
 
                 $passHash = password_hash($password, PASSWORD_BCRYPT, $options);
-                var_dump($email);
+                
                 $this->_userGateway->insert($surname, $name, $email, $passHash);
 
                 header('Location: index.php?action=connect');

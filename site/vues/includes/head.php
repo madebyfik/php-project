@@ -27,14 +27,6 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse justify-content-center" id="navbar-principal">
-                    <ul class="navbar-nav">
-                        <li class="nav-item ml-2">
-                            <a class="<?php echo isset($activeListe) ? 'active ' : ''?>nav-link hvr-underline-from-center" href="index.php">List</a>
-                        </li>
-                    </ul>
-                </div>
-
                 <?php if(!$isLoggedIn) { ?>
                     <div class="collapse navbar-collapse navbar-header justify-content-end" id="navbar-secondaire">
                         <a href="index.php?action=connect" class="nav-btn btn btn-light my-2 my-sm-0 ml-1 mr-2" role="btn">Login</a>
