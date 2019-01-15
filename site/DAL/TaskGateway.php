@@ -1,13 +1,29 @@
 <?php
 
+/**
+ * Class TaskGateway
+ */
 class TaskGateway {
 
+    /**
+     * @var
+     */
     private $_con;
 
+    /**
+     * TaskGateway constructor.
+     * @param $con
+     */
     public function __construct($con) {
         $this->_con = $con;
     }
 
+    /**
+     * Permet d'inserer une nouvelle tache dans la table tache
+     * @param $nom Represente le nom de la tache
+     * @param $description Represente la description de la tache
+     * @param $id_list Represente l'identifiant de la liste
+     */
     public function insert($nom, $description, $id_list) {
         $query = 'INSERT INTO tache (nom, description, completed, id_list) VALUES (:nom, :description, 0, :id_list)';
 
@@ -18,6 +34,11 @@ class TaskGateway {
         ));
     }
 
+    /**
+     * Permet de mettre a jour la completion d'une tache dans la table tache
+     * @param $id Represente l'identifiant de la tache
+     * @param $completed Represente la completion de la tache
+     */
     public function updateCompleted($id, $completed) {
         $query = 'UPDATE tache SET completed=:completed WHERE id=:id';
 
@@ -27,6 +48,11 @@ class TaskGateway {
         ));
     }
 
+    /**
+     * Permet d'obtenir les taches d'une liste
+     * @param $list_id Represente l'identifiant de la liste
+     * @return array|null Retourne un array de taches
+     */
     public function getTaskByListId($list_id) {
         $query = 'SELECT * FROM tache WHERE id_list = :id_list';
 

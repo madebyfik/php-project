@@ -2,14 +2,20 @@
 
 ini_set('display_errors', 0);
 
+/**
+ * Class GuestController
+ */
 class GuestController extends Controller{
 
+    /**
+     * GuestController constructor.
+     */
     public function __construct() {
         try {
             $action = $_REQUEST['action'];
             switch($action) {
                 case NULL:
-                    $this->list();
+                    $this->homePage();
                     break;
                 case 'addList':
                     $this->addList();
@@ -42,6 +48,9 @@ class GuestController extends Controller{
         }
     }
 
+    /**
+     *Permet à un utilisateur de se connecter
+     */
     public function connect() {
         global $vues, $rep;
 
@@ -64,6 +73,9 @@ class GuestController extends Controller{
         $this->render($rep, $vues['connect'], false, $data);
     }
 
+    /**
+     *Permet à un utilisateur de créer un compte
+     */
     public function register(){
         global $vues, $rep;
 

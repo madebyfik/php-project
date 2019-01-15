@@ -1,9 +1,18 @@
 <?php
 
+/**
+ * Class Autoload
+ */
 class Autoload
 {
+    /**
+     * @var null
+     */
     private static $_instance = null;
 
+    /**
+     *
+     */
     public static function load() {
         if(null !== self::$_instance) {
             throw new RuntimeException(sprintf('%s is already started', __CLASS__));
@@ -18,8 +27,9 @@ class Autoload
     }
 
 
-
-
+    /**
+     *
+     */
     public static function shutDown() {
         if(null !== self::$_instance) {
 
@@ -32,8 +42,9 @@ class Autoload
     }
 
 
-
-
+    /**
+     * @param $class
+     */
     private static function _autoload($class) {
         global $rep;
         $filename = $class.'.php';

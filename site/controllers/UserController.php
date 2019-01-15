@@ -2,15 +2,21 @@
 
 ini_set('display_errors', 0);
 
+/**
+ * Class UserController
+ */
 class UserController extends Controller {
 
+    /**
+     * UserController constructor.
+     */
     public function __construct() {
 
         try {
             $action = $_REQUEST['action'];
             switch($action) {
                 case NULL:
-                    $this->list();
+                    $this->homePage();
                     break;
                 case 'addList':
                     $this->addList();
@@ -43,6 +49,10 @@ class UserController extends Controller {
         }
     }
 
+    /**
+     * Permet de supprimer une liste privée
+     * @throws Exception
+     */
     public function deleteListPrivate() {
         global $vues, $rep;
 
@@ -55,6 +65,9 @@ class UserController extends Controller {
         header('Location: index.php?action=profilePage');
     }
 
+    /**
+     *Permet à l'utilisateur de se deconnecter
+     */
     public function disconnect() {
         global $vues, $rep;
 
