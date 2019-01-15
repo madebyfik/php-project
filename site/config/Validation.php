@@ -171,7 +171,7 @@ class Validation {
      * @param $completeTask Represente la completion de la tache
      * @param $errorArray Represente le message d'erreur
      */
-    static function valFormCompleteTask($idTask, $completeTask, $errorArray) {
+    static function valFormCompleteTask(&$idTask, &$completeTask, &$errorArray) {
         if(isset($idTask) && !empty($idTask)) {
             if($idTask != filter_var($idTask, FILTER_SANITIZE_NUMBER_INT)) {
                 $errorArray[] = "id task is incorrect";
@@ -182,14 +182,16 @@ class Validation {
             $name = "";
         }
 
-        if(isset($completeTask) && !empty($completeTask)) {
-            if($completeTask != filter_var($completeTask, FILTER_SANITIZE_STRING)) {
+        if(!isset($completeTask) && empty($completeTask)) {
+            $errorArray[] = "complete task value is empty";
+            $completeTask = "";
+        } else {
+
+            if($completeTask != filter_var($completeTask, FILTER_VALIDATE_BOOLEAN)) {
                 $errorArray[] = "complete task value is incorrect";
                 $completeTask = "";
             }
-        } else {
-            $errorArray[] = "complete task value is incorrect";
-            $completeTask = "";
+
         }
     }
 

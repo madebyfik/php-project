@@ -65,7 +65,7 @@ class TaskModel {
         if(count($errorArray) > 0) {
             throw new Exception($errorArray[0]);
         }
-        
+
         $completeTask = $completeTask === '0' ? '1' : '0';
 
         $this->_taskGateway->updateCompleted($idTask, $completeTask);
