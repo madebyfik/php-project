@@ -16,7 +16,7 @@ class ListTaskModel {
     public function __construct() {
         global $bdd;
 
-        $con = new Connection('mysql:host=localhost;dbname=projetphp', $bdd["username"], $bdd["password"]);
+        $con = new Connection($bdd["dsn"], $bdd["username"], $bdd["password"]);
         $this->_listTaskGateway = new ListTaskGateway($con);
     }
 

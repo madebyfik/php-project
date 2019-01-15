@@ -2,6 +2,7 @@
 
 $rep = __DIR__ . '/../';
 
+$bdd["dsn"] = "mysql:host=localhost;dbname=projetphp";
 $bdd["username"] = "root";
 $bdd["password"] = "";
 
