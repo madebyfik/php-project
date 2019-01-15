@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 15 déc. 2018 à 10:19
+-- Généré le :  mar. 15 jan. 2019 à 12:38
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -36,7 +36,15 @@ CREATE TABLE IF NOT EXISTS `list_tache` (
   `id_utilisateur` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_utilisateur` (`id_utilisateur`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `list_tache`
+--
+
+INSERT INTO `list_tache` (`id`, `nom`, `public`, `id_utilisateur`) VALUES
+(27, 'fkurklu', 0, 2),
+(41, 'test public', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -53,7 +61,14 @@ CREATE TABLE IF NOT EXISTS `tache` (
   `id_list` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_list` (`id_list`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `tache`
+--
+
+INSERT INTO `tache` (`id`, `nom`, `description`, `completed`, `id_list`) VALUES
+(23, 'fjikretqsdfsd', 'fdsqfsd', 0, 41);
 
 -- --------------------------------------------------------
 
@@ -69,7 +84,16 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `mail` text COLLATE utf8_unicode_ci NOT NULL,
   `password` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `mail`, `password`) VALUES
+(1, 'QLF', 'Fikret', 'fikret63@hotmail.fr', '$2y$12$8fGnMpftpnUWLFMx5teoj.DuTvV7UX9EZh1cYJSM/uOP4OTTgDtYi'),
+(2, 'Kurklu', 'Fikret', 'fkurklu68@gmail.com', '$2y$12$GjJsToRcCf70.up0nSlc1u1FsUPWdEZXCMdRZZ8wdH2pasLzeIJ2y'),
+(3, 'Depardieu', 'GÃ©rard', 'gege.depardieu@gmail.com', '$2y$12$4B5kMLAz9Z23oFgfLuVyZOq6q2aEooYQ4k9EwPkM0iQGK7.EcUxQm');
 
 --
 -- Contraintes pour les tables déchargées
